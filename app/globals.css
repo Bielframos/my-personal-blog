@@ -2,32 +2,65 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --sky-1: 190deg 100% 99%;
+    --sky-2: 195deg 75% 97%;
+    --sky-3: 195deg 88% 94%;
+    --sky-4: 195deg 80% 90%;
+    --sky-5: 195deg 73% 85%;
+    --sky-6: 197deg 65% 80%;
+    --sky-7: 197deg 61% 72%;
+    --sky-8: 198deg 60% 61%;
+    --sky-9: 193deg 98% 74%;
+    --sky-10: 194deg 90% 71%;
+    --sky-11: 196deg 100% 31%;
+    --sky-12: 205deg 50% 23%;
+
+    --orange-1: 20deg 60% 99%;
+    --orange-2: 33deg 100% 96%;
+    --orange-3: 37deg 100% 92%;
+    --orange-4: 34deg 100% 85%;
+    --orange-5: 33deg 100% 80%;
+    --orange-6: 30deg 100% 75%;
+    --orange-7: 27deg 87% 71%;
+    --orange-8: 25deg 80% 63%;
+    --orange-9: 23deg 93% 53%;
+    --orange-10: 24deg 100% 47%;
+    --orange-11: 23deg 100% 40%;
+    --orange-12: 16deg 50% 23%;
+
+    @media (prefers-color-scheme: dark) {
+      --sky-1: 217deg 41% 9%;
+      --sky-2: 215deg 39% 11%;
+      --sky-3: 211deg 58% 16%;
+      --sky-4: 208deg 67% 20%;
+      --sky-5: 206deg 66% 24%;
+      --sky-6: 205deg 64% 29%;
+      --sky-7: 203deg 65% 35%;
+      --sky-8: 200deg 75% 39%;
+      --sky-9: 193deg 98% 74%;
+      --sky-10: 192deg 100% 83%;
+      --sky-11: 200deg 80% 70%;
+      --sky-12: 192deg 100% 88%;
+
+      --orange-1: 27deg 24% 7%;
+      --orange-2: 28deg 33% 9%;
+      --orange-3: 29deg 65% 12%;
+      --orange-4: 28deg 100% 14%;
+      --orange-5: 28deg 100% 17%;
+      --orange-6: 27deg 79% 22%;
+      --orange-7: 25deg 63% 30%;
+      --orange-8: 23deg 60% 40%;
+      --orange-9: 23deg 93% 53%;
+      --orange-10: 26deg 100% 56%;
+      --orange-11: 26deg 100% 67%;
+      --orange-12: 30deg 100% 88%;
+    }
+  }
+
+  html {
+    @apply bg-sky-1 text-sky-12 h-full w-full;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-}
