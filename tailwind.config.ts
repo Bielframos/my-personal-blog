@@ -45,7 +45,7 @@ const config: Config = {
         11: "hsla(0, 0%, 100%, 0.9)",
         12: "hsla(0, 0%, 100%, 1)",
       },
-      sky: {
+      blue: {
         1: "hsl(var(--blue-1) / <alpha-value>)",
         2: "hsl(var(--blue-2) / <alpha-value>)",
         3: "hsl(var(--blue-3) / <alpha-value>)",
