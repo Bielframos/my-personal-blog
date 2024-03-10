@@ -4,6 +4,8 @@
 
 @layer base {
   :root {
+    font-family: "Geist Sans", sans-serif;
+
     --blue-1: 210deg 100% 99%;
     --blue-2: 207deg 100% 98%;
     --blue-3: 205deg 92% 95%;
@@ -57,10 +59,6 @@
       --orange-11: 26deg 100% 67%;
       --orange-12: 30deg 100% 88%;
     }
-  }
-
-  html {
-    @apply bg-white-12 dark:bg-black-12 text-black-12 dark:text-white-12 h-full w-full;
   }
 }
 
