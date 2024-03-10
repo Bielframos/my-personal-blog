@@ -4,18 +4,18 @@
 
 @layer base {
   :root {
-    --sky-1: 190deg 100% 99%;
-    --sky-2: 195deg 75% 97%;
-    --sky-3: 195deg 88% 94%;
-    --sky-4: 195deg 80% 90%;
-    --sky-5: 195deg 73% 85%;
-    --sky-6: 197deg 65% 80%;
-    --sky-7: 197deg 61% 72%;
-    --sky-8: 198deg 60% 61%;
-    --sky-9: 193deg 98% 74%;
-    --sky-10: 194deg 90% 71%;
-    --sky-11: 196deg 100% 31%;
-    --sky-12: 205deg 50% 23%;
+    --blue-1: 210deg 100% 99%;
+    --blue-2: 207deg 100% 98%;
+    --blue-3: 205deg 92% 95%;
+    --blue-4: 203deg 100% 92%;
+    --blue-5: 206deg 100% 88%;
+    --blue-6: 207deg 93% 83%;
+    --blue-7: 207deg 85% 76%;
+    --blue-8: 206deg 82% 65%;
+    --blue-9: 206deg 100% 50%;
+    --blue-10: 207deg 96% 48%;
+    --blue-11: 208deg 88% 43%;
+    --blue-12: 216deg 71% 23%;
 
     --orange-1: 20deg 60% 99%;
     --orange-2: 33deg 100% 96%;
@@ -31,18 +31,18 @@
     --orange-12: 16deg 50% 23%;
 
     @media (prefers-color-scheme: dark) {
-      --sky-1: 217deg 41% 9%;
-      --sky-2: 215deg 39% 11%;
-      --sky-3: 211deg 58% 16%;
-      --sky-4: 208deg 67% 20%;
-      --sky-5: 206deg 66% 24%;
-      --sky-6: 205deg 64% 29%;
-      --sky-7: 203deg 65% 35%;
-      --sky-8: 200deg 75% 39%;
-      --sky-9: 193deg 98% 74%;
-      --sky-10: 192deg 100% 83%;
-      --sky-11: 200deg 80% 70%;
-      --sky-12: 192deg 100% 88%;
+      --blue-1: 215deg 42% 9%;
+      --blue-2: 218deg 39% 11%;
+      --blue-3: 212deg 69% 16%;
+      --blue-4: 209deg 100% 19%;
+      --blue-5: 207deg 100% 23%;
+      --blue-6: 209deg 79% 30%;
+      --blue-7: 211deg 66% 37%;
+      --blue-8: 211deg 65% 45%;
+      --blue-9: 206deg 100% 50%;
+      --blue-10: 210deg 100% 62%;
+      --blue-11: 210deg 100% 72%;
+      --blue-12: 205deg 100% 88%;
 
       --orange-1: 27deg 24% 7%;
       --orange-2: 28deg 33% 9%;
@@ -60,7 +60,7 @@
   }
 
   html {
-    @apply bg-sky-1 text-sky-12 h-full w-full;
+    @apply bg-white-12 dark:bg-black-12 text-black-12 dark:text-white-12 h-full w-full;
   }
 }
 
