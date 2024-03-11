@@ -44,12 +44,12 @@ export const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false)
 
   return (
-    <div className="fixed top-0 inset-0 overflow-hidden">
+    <div className="fixed top-0 inset-0 overflow-hidden z-50">
       <motion.ul
         variants={ulAnimation}
         initial="hidden"
         animate={showMenu ? "show" : "hidden"}
-        className="absolute top-1/2 -translate-y-1/2 max-w-56 border-y border-l px-6 py-6 rounded-l-xl bg-white-12 dark:bg-black-12 z-50"
+        className="absolute top-1/2 -translate-y-1/2 w-full max-w-56 border-y border-l px-6 py-6 rounded-l-xl bg-white-12 dark:bg-black-12 z-50"
       >
         {subPages.map((route) => (
           <li key={route.title}>
