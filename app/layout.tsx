@@ -11,7 +11,12 @@ const geistMono = GeistMono.variable
 
 export const metadata: Metadata = {
   title: "Gabriel França",
-  description: "Blog pessoal do desenvolverdor Gabriel França.",
+  description: "Um lugar para compartilhar experiências!",
+  keywords: ["blog pessoal", "Gabriel França"],
+  openGraph: {
+    images:
+      "https://res.cloudinary.com/adstrito/image/upload/v1710168988/dfcxc4zfxvzpwnlz2md4.jpg",
+  },
 }
 
 export default function RootLayout({
