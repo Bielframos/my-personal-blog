@@ -43,7 +43,7 @@ export default function Home() {
           <h2 className="text-lg font-semibold">Quem sou eu?</h2>
           <p>
             Eu sou Gabriel, tenho 24 anos e moro junto com minha esposa e filha (Kamala, uma
-            dachshund), nossa familia é 200% nordestina, somos nacidos e criados na cidade de
+            dachshund), nossa família é 200% nordestina, somos nascidos e criados na cidade de
             Olinda no litoral Pernambucano.
           </p>
 
@@ -65,11 +65,11 @@ export default function Home() {
         <article className="p-6 grid auto-rows-min gap-2 [&_p]:text-white-10">
           <h2 className="text-lg font-semibold">Eu posso tirar suas ideias do papel 💫</h2>
           <p>
-            Eu tenho experiëncia com Design Gráfico, UI/UX, Desenvolvimento Front-end e um pouco
+            Eu tenho experiência com Design Gráfico, UI/UX, Desenvolvimento Front-end e um pouco
             de Back-end e estou disponível para te ajudar a construir projetos incríveis.
           </p>
 
-          <p>Pra falar comigo é facinho, basta clilcar nesse botão aqui em baixo.</p>
+          <p>Pra falar comigo é facinho, basta clicar nesse botão aqui em baixo.</p>
 
           <Link href="https://wa.me/+5581985898807" target="_blank" className="mt-2">
             <Button iconPos="before">
