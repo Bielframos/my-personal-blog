@@ -39,7 +39,7 @@ export default function Home() {
 
         <hr />
 
-        <article className="p-6 grid auto-rows-min gap-2 [&_p]:text-black-10 dark:[&_p]:text-black-10">
+        <article className="p-6 grid auto-rows-min gap-2 [&_p]:text-black-10 dark:[&_p]:text-white-10">
           <h2 className="text-lg font-semibold">Quem sou eu?</h2>
           <p>
             Eu sou Gabriel, tenho 24 anos e moro junto com minha esposa e filha (Kamala, uma
@@ -62,7 +62,7 @@ export default function Home() {
 
         <hr />
 
-        <article className="p-6 grid auto-rows-min gap-2 [&_p]:text-black-10 dark:[&_p]:text-black-10">
+        <article className="p-6 grid auto-rows-min gap-2 [&_p]:text-black-10 dark:[&_p]:text-white-10">
           <h2 className="text-lg font-semibold">Eu posso tirar suas ideias do papel 💫</h2>
           <p>
             Eu tenho experiência com Design Gráfico, UI/UX, Desenvolvimento Front-end e um pouco
