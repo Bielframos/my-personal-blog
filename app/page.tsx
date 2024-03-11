@@ -1,3 +1,4 @@
+import { AnimatedPic } from "@/components/modules/animated-pic"
 import { Button } from "@/components/ui/button"
 import { MessagesSquare } from "lucide-react"
 import Image from "next/image"
@@ -5,8 +6,8 @@ import Link from "next/link"
 
 export default function Home() {
   return (
-    <main className="pl-8 pr-16 py-16">
-      <section className="relative w-full mx-auto max-w-xl border rounded-lg bg-white-12 dark:bg-black-12">
+    <main className="py-16 min-h-[100dvh] flex items-center justify-center overflow-hidden">
+      <section className="relative w-full ml-8 mr-16 max-w-md 2xl:max-w-xl border rounded-lg bg-white-12 dark:bg-black-12">
         <header className="grid grid-cols-[auto,1fr] auto-rows-min p-6">
           <Image
             src="/my-profile-pic.webp"
@@ -76,6 +77,38 @@ export default function Home() {
             </Button>
           </Link>
         </article>
+
+        <AnimatedPic
+          src="/kamala.webp"
+          alt="Foto da minha filha (Kamala, uma cadela da raça dachshund)"
+          width={320}
+          height={320}
+          className="absolute -top-6 -left-[calc(320px+40px)]"
+        />
+
+        <AnimatedPic
+          src="/my-marriage.webp"
+          alt="Eu e minha esposa no nosso casamento"
+          width={320}
+          height={320}
+          className="absolute -bottom-6 -right-[calc(320px+40px)]"
+        />
+
+        <AnimatedPic
+          src="/me-with-a-snake.webp"
+          alt="Eu e minha esposa no nosso casamento"
+          width={196}
+          height={245}
+          className="absolute bottom-[calc(320px+24px)] -right-[calc(196px+40px)]"
+        />
+
+        <AnimatedPic
+          src="/me-and-my-wife.webp"
+          alt="Eu e minha esposa"
+          width={198}
+          height={148.5}
+          className="absolute top-[calc(320px+24px)] -left-[calc(198px+40px)]"
+        />
 
         <div className="absolute inset-0 w-full h-full rounded-lg border border-dashed left-4 top-4 bg-texture-black dark:bg-texture-white -z-10" />
       </section>
