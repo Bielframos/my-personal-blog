@@ -60,6 +60,19 @@
       --orange-12: 30deg 100% 88%;
     }
   }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-black-2 dark:bg-white-2;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-black-2 dark:bg-white-2;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-black-3 dark:bg-white-3;
+  }
 }
 
 .lucide {

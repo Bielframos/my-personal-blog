@@ -6,17 +6,13 @@ import Image from "next/image"
 import { useEffect, useState } from "react"
 
 export const AnimatedPic = ({
-  className,
-  width,
-  height,
   src,
   alt,
+  className,
 }: {
-  className?: string
-  width: number
-  height: number
   src: string
   alt: string
+  className?: string
 }) => {
   const [showMask, setShowMask] = useState(false)
   const [mousePositionOnImg, setMousePositionOnImg] = useState({
@@ -32,18 +28,17 @@ export const AnimatedPic = ({
 
   return (
     <motion.div
-      className={cn("relative border z-50 rounded-lg", className)}
-      style={{ width, height }}
+      className={cn("relative border z-50 rounded-lg w-full aspect-square", className)}
       onMouseMove={updateMousePosition}
       onMouseEnter={() => setShowMask(true)}
       onMouseLeave={() => setShowMask(false)}
     >
-      <Image src={src} width={width} height={height} alt={alt} className="rounded-lg" />
+      <Image src={src} fill={true} alt={alt} className="rounded-lg object-cover" />
       <div
         className="absolute inset-0 backdrop-grayscale backdrop-contrast-125 object-cover rounded-lg z-40"
         style={{ maskImage: `url(#${src})` }}
       />
-      <svg width={width} height={height} className="absolute inset-0">
+      <svg width="100%" height="100%" className="absolute inset-0">
         <defs>
           <mask id={src}>
             <rect width="100%" height="100%" fill="#FFFFFF" />
@@ -63,7 +58,7 @@ export const AnimatedPic = ({
         </defs>
       </svg>
 
-      <div className="absolute bg-white-12 dark:bg-black-12 inset-0 w-full h-full rounded-lg border border-dashed left-4 top-4 bg-texture-black dark:bg-texture-white -z-10" />
+      {/* <div className="absolute bg-white-12 dark:bg-black-12 inset-0 w-full h-full rounded-lg border border-dashed left-4 top-4 bg-texture-black dark:bg-texture-white -z-10" /> */}
     </motion.div>
   )
 }
