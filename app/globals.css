@@ -33,32 +33,42 @@
     --orange-12: 16deg 50% 23%;
 
     @media (prefers-color-scheme: dark) {
-      --blue-1: 215deg 42% 9%;
-      --blue-2: 218deg 39% 11%;
-      --blue-3: 212deg 69% 16%;
-      --blue-4: 209deg 100% 19%;
-      --blue-5: 207deg 100% 23%;
-      --blue-6: 209deg 79% 30%;
-      --blue-7: 211deg 66% 37%;
-      --blue-8: 211deg 65% 45%;
-      --blue-9: 206deg 100% 50%;
-      --blue-10: 210deg 100% 62%;
-      --blue-11: 210deg 100% 72%;
-      --blue-12: 205deg 100% 88%;
+      html:not(.light) {
+        --blue-1: 215deg 42% 9%;
+        --blue-2: 218deg 39% 11%;
+        --blue-3: 212deg 69% 16%;
+        --blue-4: 209deg 100% 19%;
+        --blue-5: 207deg 100% 23%;
+        --blue-6: 209deg 79% 30%;
+        --blue-7: 211deg 66% 37%;
+        --blue-8: 211deg 65% 45%;
+        --blue-9: 206deg 100% 50%;
+        --blue-10: 210deg 100% 62%;
+        --blue-11: 210deg 100% 72%;
+        --blue-12: 205deg 100% 88%;
 
-      --orange-1: 27deg 24% 7%;
-      --orange-2: 28deg 33% 9%;
-      --orange-3: 29deg 65% 12%;
-      --orange-4: 28deg 100% 14%;
-      --orange-5: 28deg 100% 17%;
-      --orange-6: 27deg 79% 22%;
-      --orange-7: 25deg 63% 30%;
-      --orange-8: 23deg 60% 40%;
-      --orange-9: 23deg 93% 53%;
-      --orange-10: 26deg 100% 56%;
-      --orange-11: 26deg 100% 67%;
-      --orange-12: 30deg 100% 88%;
+        --orange-1: 27deg 24% 7%;
+        --orange-2: 28deg 33% 9%;
+        --orange-3: 29deg 65% 12%;
+        --orange-4: 28deg 100% 14%;
+        --orange-5: 28deg 100% 17%;
+        --orange-6: 27deg 79% 22%;
+        --orange-7: 25deg 63% 30%;
+        --orange-8: 23deg 60% 40%;
+        --orange-9: 23deg 93% 53%;
+        --orange-10: 26deg 100% 56%;
+        --orange-11: 26deg 100% 67%;
+        --orange-12: 30deg 100% 88%;
+      }
     }
+  }
+
+  * {
+    @apply border-black-4 dark:border-white-4;
+  }
+
+  html {
+    @apply bg-white-12 dark:bg-black-12 text-black-12 dark:text-white-12;
   }
 
   ::-webkit-scrollbar {
@@ -78,4 +88,3 @@
 .lucide {
   stroke-width: 1.5;
 }
-
