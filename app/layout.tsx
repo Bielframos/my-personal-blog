@@ -1,10 +1,9 @@
+import { Navbar } from "@/components/modules/navbar"
+import cn from "@/utils/cn"
 import { GeistMono } from "geist/font/mono"
 import { GeistSans } from "geist/font/sans"
 import type { Metadata } from "next"
-
-import cn from "@/utils/cn"
 import "./globals.css"
-import { Navbar } from "@/components/modules/navbar"
 
 const geist = GeistSans.className
 const geistMono = GeistMono.variable
@@ -25,13 +24,15 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html
-      lang="pt-BR"
-      className="bg-white-12 text-black-12 dark:bg-black-12 dark:text-white-12 [&_*]:border-black-2 dark:[&_*]:border-white-3 h-full [&_body]:h-full"
-    >
-      <body className={cn(geist, geistMono)}>
+    <html lang="pt-BR" className="light">
+      <body className={cn(geist, geistMono, "md:flex")}>
         <Navbar />
-        {children}
+        <main className="py-10 md:py-16 min-h-[100svh] flex items-center justify-center overflow-hidden flex-1">
+          <section className="relative w-full mx-6 max-w-2xl border rounded-lg bg-white-12 dark:bg-black-12">
+            {children}
+            <div className="absolute inset-0 w-full h-full rounded-lg border border-dashed left-4 top-4 bg-texture-black dark:bg-texture-white -z-10" />
+          </section>
+        </main>
       </body>
     </html>
   )
