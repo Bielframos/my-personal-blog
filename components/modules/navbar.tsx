@@ -12,7 +12,7 @@ import { Zerei } from "../ui/icons/zerei"
 
 const subPages = [
   { icon: Home, title: "Início", href: "/", disabled: false },
-  { icon: Newspaper, title: "Feed", href: "/feed", disabled: true },
+  { icon: Newspaper, title: "Feed", href: "/feed", disabled: false },
   { icon: Zerei, title: "Zerei", href: "/zerei", disabled: true },
 ]
 
@@ -55,7 +55,7 @@ export const Navbar = () => {
       variants={ulAnimation}
       initial="hidden"
       animate={showMenu ? "show" : "hidden"}
-      className="fixed top-1/2 -translate-y-1/2 w-full max-w-56 border-y border-l px-6 py-6 rounded-l-xl bg-white-12 dark:bg-black-12 z-[999]"
+      className="fixed top-1/2 -translate-y-1/2 w-full max-w-60 border-y border-l pl-[36px] pr-6 py-6 rounded-l-xl bg-white-12 dark:bg-black-12 z-[999]"
     >
       {subPages.map((route) => (
         <li key={route.title}>
@@ -94,7 +94,7 @@ export const Navbar = () => {
 
       <Button
         size="icon"
-        className="absolute left-[-20px] border top-1/2 -translate-y-1/2 bg-white-12 dark:bg-black-12 backdrop-blur-xl overflow-hidden"
+        className="absolute left-[-20px] border top-6 bg-white-12 dark:bg-black-12 backdrop-blur-xl overflow-hidden"
         onClick={() => setShowMenu(!showMenu)}
       >
         <AnimatePresence mode="wait">
