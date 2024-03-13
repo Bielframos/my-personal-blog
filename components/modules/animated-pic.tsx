@@ -1,6 +1,6 @@
 "use client"
 
-import cn from "@/utils/cn"
+import cn from "@/lib/utils/cn"
 import { motion, useMotionValue, useSpring } from "framer-motion"
 import Image from "next/image"
 import { useEffect, useState } from "react"
