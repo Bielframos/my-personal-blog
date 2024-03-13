@@ -21,22 +21,12 @@ export const metadata: Metadata = {
   },
 }
 
-function getAndUptadeCookieTheme() {
-  const theme = cookies().get("theme")?.value as Theme | undefined
-
-  if (theme) {
-    setThemeCookie(theme)
-  }
-
-  return theme
-}
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  const theme = getAndUptadeCookieTheme()
+  const theme = cookies().get("theme")?.value as Theme | undefined
   return (
     <html lang="pt-BR" className={theme}>
       <body
