@@ -3,7 +3,7 @@ import { VariantProps, cva } from "class-variance-authority"
 import { ComponentProps } from "react"
 
 export const style = cva(
-  "flex rounded-lg justify-center items-center gap-2 focus-visible:outline-none focus-visible:ring-2 ring-black-2 dark:ring-white-6 transition-colors px-4 py-2 w-fit disabled:bg-[transparent] disabled:opacity-50 disabled:pointer-events-none",
+  "flex rounded-lg justify-center items-center gap-2 focus-visible:outline-none focus-visible:ring-2 ring-black-2 dark:ring-white-6 transition-colors px-4 py-2 w-fit disabled:bg-black-1 dark:disabled:bg-white-1 disabled:text-black-12 dark:disabled:text-white-12 disabled:opacity-50 disabled:pointer-events-none",
   {
     variants: {
       variant: {

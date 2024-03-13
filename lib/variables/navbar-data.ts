@@ -3,7 +3,7 @@ import { Github, Home, Instagram, Newspaper } from "lucide-react"
 
 export const SUB_PAGES = [
   { icon: Home, title: "Início", href: "/", disabled: false },
-  { icon: Newspaper, title: "Feed", href: "/feed", disabled: true },
+  { icon: Newspaper, title: "Feed", href: "/feed", disabled: false },
   { icon: Zerei, title: "Zerei", href: "/zerei", disabled: true },
 ]
 

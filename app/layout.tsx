@@ -6,6 +6,7 @@ import { GeistSans } from "geist/font/sans"
 import type { Metadata } from "next"
 import { cookies } from "next/headers"
 import "./globals.css"
+import { Card } from "@/components/ui/card"
 
 const geist = GeistSans.className
 const geistMono = GeistMono.variable
@@ -37,11 +38,8 @@ export default function RootLayout({
       >
         <div className="md:flex">
           <Navbar userTheme={theme} />
-          <main className="py-10 md:py-16 min-h-[100svh] flex items-center justify-center overflow-hidden flex-1">
-            <section className="relative w-full mx-6 max-w-2xl border rounded-lg bg-white-12 dark:bg-black-12">
-              {children}
-              <div className="absolute inset-0 w-full h-full rounded-lg border border-dashed left-4 top-4 bg-texture-black dark:bg-texture-white -z-10" />
-            </section>
+          <main className="flex flex-col px-6 py-10 md:py-16 justify-center mx-auto">
+            {children}
           </main>
         </div>
       </body>

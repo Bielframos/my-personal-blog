@@ -1,12 +1,12 @@
 import { AnimatedPic } from "@/components/modules/animated-pic"
 import { Button } from "@/components/ui/button"
+import { Card } from "@/components/ui/card"
 import { MessagesSquare } from "lucide-react"
 import Link from "next/link"
-import { Fragment } from "react"
 
 export default function Home() {
   return (
-    <Fragment>
+    <Card>
       <article className="p-6 grid auto-rows-min gap-2 [&_p]:text-black-10 dark:[&_p]:text-white-10">
         <h2 className="text-lg font-semibold">Hey there! 👋</h2>
 
@@ -75,7 +75,7 @@ export default function Home() {
           </Button>
         </Link>
       </article>
-    </Fragment>
+    </Card>
   )
 }
 
