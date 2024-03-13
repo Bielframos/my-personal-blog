@@ -1,39 +1,16 @@
 "use client"
 
-import { X } from "@/components/ui/icons/x"
 import cn from "@/lib/utils/cn"
 import { AnimatePresence, motion, type Variants } from "framer-motion"
-import { ChevronLeft, Github, Home, Instagram, Menu, Newspaper } from "lucide-react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { createElement, useState } from "react"
-import { Zerei } from "../ui/icons/zerei"
 import { useMediaQuery } from "@/lib/hooks/use-media-query"
-import { Theme, ThemeSwitch } from "./theme-switch"
 import Image from "next/image"
 import { Button } from "../ui/button"
-
-const subPages = [
-  { icon: Home, title: "Início", href: "/", disabled: false },
-  { icon: Newspaper, title: "Feed", href: "/feed", disabled: true },
-  { icon: Zerei, title: "Zerei", href: "/zerei", disabled: true },
-]
-
-const socialMedia = [
-  { icon: Github, title: "Github", href: "https://github.com/Bielframos", disabled: false },
-  {
-    icon: X,
-    title: "X (Twitter)",
-    href: "https://twitter.com/GabrielFramos99",
-    disabled: false,
-  },
-  {
-    icon: Instagram,
-    title: "Instagram",
-    href: "https://www.instagram.com/framosgabriel/",
-    disabled: false,
-  },
-]
+import { Theme, ThemeSwitch } from "./theme-switch"
+import { SOCIAL_MEDIA_LINKS, SUB_PAGES } from "@/lib/variables/navbar-data"
+import { ChevronLeft, Menu } from "lucide-react"
 
 const ulAnimation: Variants = {
   hidden: { left: "-256px" },
@@ -84,7 +61,7 @@ export const Navbar = ({ userTheme }: { userTheme?: Theme }) => {
         </header>
 
         <ul className="p-6 border-t">
-          {subPages.map((route) => (
+          {SUB_PAGES.map((route) => (
             <li key={route.title}>
               <Link
                 href={route.disabled ? "#" : route.href}
@@ -105,7 +82,7 @@ export const Navbar = ({ userTheme }: { userTheme?: Theme }) => {
 
         <ul className="p-6">
           <h6 className="text-sm text-black-10 dark:text-white-10 pl-4 pb-2">Minhas redes</h6>
-          {socialMedia.map((route) => (
+          {SOCIAL_MEDIA_LINKS.map((route) => (
             <li key={route.title}>
               <Link
                 href={route.href}
