@@ -2,14 +2,15 @@
 
 import { Button } from "@/components/ui/button"
 import { X } from "@/components/ui/icons/x"
-import cn from "@/utils/cn"
+import cn from "@/lib/utils/cn"
 import { AnimatePresence, motion, type Variants } from "framer-motion"
 import { ChevronLeft, Github, Home, Instagram, Menu, Newspaper } from "lucide-react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { createElement, useState } from "react"
 import { Zerei } from "../ui/icons/zerei"
-import { useMediaQuery } from "@/hooks/use-media-query"
+import { useMediaQuery } from "@/lib/hooks/use-media-query"
+import { Theme, ThemeSwitch } from "./theme-switch"
 
 const subPages = [
   { icon: Home, title: "Início", href: "/", disabled: false },
@@ -52,17 +53,17 @@ const IconContainer = ({ children }: { children: React.ReactNode; key: string })
   )
 }
 
-export const Navbar = () => {
+export const Navbar = ({ userTheme }: { userTheme?: Theme }) => {
   const path = usePathname()
   const isMobile = useMediaQuery("(max-width: 768px)")
-  const [showMenu, setShowMenu] = useState(!isMobile)
+  const [showMenu, setShowMenu] = useState(false)
 
   return (
     <motion.nav
       variants={ulAnimation}
-      initial={isMobile ? "hidden" : "show"}
+      initial="hidden"
       animate={showMenu ? "show" : "hidden"}
-      className="fixed top-10 w-full max-w-60 border-y border-r rounded-r-xl bg-white-12 dark:bg-black-12 md:sticky md:top-0 md:h-[100svh] md:rounded-none md:py-16 z-[999]"
+      className="fixed top-10 w-full max-w-60 border-y border-r rounded-r-xl bg-white-12 dark:bg-black-12 md:sticky md:top-0 md:h-[100svh] md:rounded-none md:py-16 z-[999] flex flex-col"
     >
       <ul className="p-6">
         {subPages.map((route) => (
@@ -76,7 +77,7 @@ export const Navbar = () => {
                 iconPos="before"
                 className={cn(
                   path === route.href &&
-                    "bg-blue-3 hover:bg-blue-4 dark:hover:bg-blue-4 text-blue-9"
+                    "bg-blue-3 dark:bg-blue-dark-3 hover:bg-blue-4 dark:hover:bg-blue-dark-4 text-blue-9"
                 )}
                 disabled={route.disabled}
               >
@@ -102,7 +103,9 @@ export const Navbar = () => {
         ))}
       </ul>
 
-      <hr />
+      <hr className="md:mb-auto" />
+
+      <ThemeSwitch userTheme={userTheme} />
 
       {isMobile && (
         <Button

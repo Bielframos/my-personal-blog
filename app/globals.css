@@ -5,83 +5,11 @@
 @layer base {
   :root {
     font-family: "Geist Sans", sans-serif;
-
-    --blue-1: 210deg 100% 99%;
-    --blue-2: 207deg 100% 98%;
-    --blue-3: 205deg 92% 95%;
-    --blue-4: 203deg 100% 92%;
-    --blue-5: 206deg 100% 88%;
-    --blue-6: 207deg 93% 83%;
-    --blue-7: 207deg 85% 76%;
-    --blue-8: 206deg 82% 65%;
-    --blue-9: 206deg 100% 50%;
-    --blue-10: 207deg 96% 48%;
-    --blue-11: 208deg 88% 43%;
-    --blue-12: 216deg 71% 23%;
-
-    --orange-1: 20deg 60% 99%;
-    --orange-2: 33deg 100% 96%;
-    --orange-3: 37deg 100% 92%;
-    --orange-4: 34deg 100% 85%;
-    --orange-5: 33deg 100% 80%;
-    --orange-6: 30deg 100% 75%;
-    --orange-7: 27deg 87% 71%;
-    --orange-8: 25deg 80% 63%;
-    --orange-9: 23deg 93% 53%;
-    --orange-10: 24deg 100% 47%;
-    --orange-11: 23deg 100% 40%;
-    --orange-12: 16deg 50% 23%;
-
-    @media (prefers-color-scheme: dark) {
-      html:not(.light) {
-        --blue-1: 215deg 42% 9%;
-        --blue-2: 218deg 39% 11%;
-        --blue-3: 212deg 69% 16%;
-        --blue-4: 209deg 100% 19%;
-        --blue-5: 207deg 100% 23%;
-        --blue-6: 209deg 79% 30%;
-        --blue-7: 211deg 66% 37%;
-        --blue-8: 211deg 65% 45%;
-        --blue-9: 206deg 100% 50%;
-        --blue-10: 210deg 100% 62%;
-        --blue-11: 210deg 100% 72%;
-        --blue-12: 205deg 100% 88%;
-
-        --orange-1: 27deg 24% 7%;
-        --orange-2: 28deg 33% 9%;
-        --orange-3: 29deg 65% 12%;
-        --orange-4: 28deg 100% 14%;
-        --orange-5: 28deg 100% 17%;
-        --orange-6: 27deg 79% 22%;
-        --orange-7: 25deg 63% 30%;
-        --orange-8: 23deg 60% 40%;
-        --orange-9: 23deg 93% 53%;
-        --orange-10: 26deg 100% 56%;
-        --orange-11: 26deg 100% 67%;
-        --orange-12: 30deg 100% 88%;
-      }
-    }
   }
 
+  /* Setting a global color for the borders */
   * {
     @apply border-black-4 dark:border-white-4;
-  }
-
-  html {
-    @apply bg-white-12 dark:bg-black-12 text-black-12 dark:text-white-12;
-  }
-
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
-  ::-webkit-scrollbar-track {
-    @apply bg-black-2 dark:bg-white-2;
-  }
-  ::-webkit-scrollbar-thumb {
-    @apply bg-black-2 dark:bg-white-2;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    @apply bg-black-3 dark:bg-white-3;
   }
 }
 
