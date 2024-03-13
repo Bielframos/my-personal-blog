@@ -1,6 +1,5 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
 import { X } from "@/components/ui/icons/x"
 import cn from "@/lib/utils/cn"
 import { AnimatePresence, motion, type Variants } from "framer-motion"
@@ -11,6 +10,8 @@ import { createElement, useState } from "react"
 import { Zerei } from "../ui/icons/zerei"
 import { useMediaQuery } from "@/lib/hooks/use-media-query"
 import { Theme, ThemeSwitch } from "./theme-switch"
+import Image from "next/image"
+import { Button } from "../ui/button"
 
 const subPages = [
   { icon: Home, title: "Início", href: "/", disabled: false },
@@ -35,7 +36,7 @@ const socialMedia = [
 ]
 
 const ulAnimation: Variants = {
-  hidden: { left: "-240px" },
+  hidden: { left: "-256px" },
   show: { left: "0px" },
 }
 
@@ -59,53 +60,72 @@ export const Navbar = ({ userTheme }: { userTheme?: Theme }) => {
   const [showMenu, setShowMenu] = useState(false)
 
   return (
-    <motion.nav
+    <motion.div
       variants={ulAnimation}
       initial="hidden"
       animate={showMenu ? "show" : "hidden"}
-      className="fixed top-10 w-full max-w-60 border-y border-r rounded-r-xl bg-white-12 dark:bg-black-12 md:sticky md:top-0 md:h-[100svh] md:rounded-none md:py-16 z-[999] flex flex-col"
+      className="fixed md:sticky md:top-0 w-full max-w-64 h-svh border-r bg-white-12 dark:bg-black-12 z-[999]"
     >
-      <ul className="p-6">
-        {subPages.map((route) => (
-          <li key={route.title}>
-            <Link
-              href={route.disabled ? "#" : route.href}
-              className={cn(route.disabled && "pointer-events-none")}
-            >
-              <Button
-                variant="nav"
-                iconPos="before"
+      <nav className="flex flex-col py-10 md:py-16 h-full overflow-y-auto">
+        <header className="flex gap-3 px-6 pt-6 pb-6 md:pt-0 relative">
+          <Image
+            src="/my-profile-pic.webp"
+            width={42}
+            height={42}
+            alt="Uma foto do Gabriel França"
+            className="rounded-full border aspect-square flex-1"
+          />
+          <div className="flex flex-col justify-center">
+            <h1 className="font-lg font-semibold">Gabriel França</h1>
+            <p className="text-black-10 dark:text-white-10 col-start-2 -mt-1">
+              Desenvolvedor Web
+            </p>
+          </div>
+        </header>
+
+        <ul className="p-6 border-t">
+          {subPages.map((route) => (
+            <li key={route.title}>
+              <Link
+                href={route.disabled ? "#" : route.href}
                 className={cn(
+                  "flex gap-2 pl-3 pr-4 py-2 rounded-lg transition-colors w-full hover:bg-black-2 dark:hover:bg-white-2",
                   path === route.href &&
-                    "bg-blue-3 dark:bg-blue-dark-3 hover:bg-blue-4 dark:hover:bg-blue-dark-4 text-blue-9"
+                    "bg-blue-3 hover:bg-blue-4 dark:bg-blue-dark-4 dark:hover:bg-blue-dark-4 text-blue-9",
+                  route.disabled && "pointer-events-none opacity-50"
                 )}
-                disabled={route.disabled}
               >
                 {createElement(route.icon)} {route.title}
-              </Button>
-            </Link>
-          </li>
-        ))}
-      </ul>
+              </Link>
+            </li>
+          ))}
+        </ul>
 
-      <hr />
+        <hr />
 
-      <ul className="p-6">
-        <h6 className="text-sm text-black-10 dark:text-white-10 pl-4 pb-2">Minhas redes</h6>
-        {socialMedia.map((route) => (
-          <li key={route.title}>
-            <Link href={route.href}>
-              <Button variant="nav" iconPos="before" disabled={route.disabled}>
+        <ul className="p-6">
+          <h6 className="text-sm text-black-10 dark:text-white-10 pl-4 pb-2">Minhas redes</h6>
+          {socialMedia.map((route) => (
+            <li key={route.title}>
+              <Link
+                href={route.href}
+                className={cn(
+                  "flex gap-2 pl-3 pr-4 py-2 rounded-lg transition-colors w-full hover:bg-black-2 dark:hover:bg-white-2",
+                  path === route.href &&
+                    "bg-blue-3 hover:bg-blue-4 dark:bg-blue-dark-4 dark:hover:bg-blue-dark-4 text-blue-9",
+                  route.disabled && "pointer-events-none opacity-50"
+                )}
+              >
                 {createElement(route.icon)} {route.title}
-              </Button>
-            </Link>
-          </li>
-        ))}
-      </ul>
+              </Link>
+            </li>
+          ))}
+        </ul>
 
-      <hr className="md:mb-auto" />
+        <hr className="mb-6" />
 
-      <ThemeSwitch userTheme={userTheme} />
+        <ThemeSwitch userTheme={userTheme} />
+      </nav>
 
       {isMobile && (
         <Button
@@ -128,6 +148,6 @@ export const Navbar = ({ userTheme }: { userTheme?: Theme }) => {
           </AnimatePresence>
         </Button>
       )}
-    </motion.nav>
+    </motion.div>
   )
 }

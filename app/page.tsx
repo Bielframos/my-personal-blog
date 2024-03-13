@@ -1,27 +1,12 @@
 import { AnimatedPic } from "@/components/modules/animated-pic"
 import { Button } from "@/components/ui/button"
 import { MessagesSquare } from "lucide-react"
-import Image from "next/image"
 import Link from "next/link"
 import { Fragment } from "react"
 
 export default function Home() {
   return (
     <Fragment>
-      <header className="grid grid-cols-[auto,1fr] auto-rows-min px-6 p-[20px] relative">
-        <Image
-          src="/my-profile-pic.webp"
-          width={48}
-          height={48}
-          alt="Uma foto do Gabriel França"
-          className="rounded-full row-span-2 mr-3"
-        />
-        <h1 className="font-lg font-semibold">Gabriel França</h1>
-        <p className="text-black-10 dark:text-white-10 col-start-2">Desenvolvedor Web</p>
-      </header>
-
-      <hr />
-
       <article className="p-6 grid auto-rows-min gap-2 [&_p]:text-black-10 dark:[&_p]:text-white-10">
         <h2 className="text-lg font-semibold">Hey there! 👋</h2>
 

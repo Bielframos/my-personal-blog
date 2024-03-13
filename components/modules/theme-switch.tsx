@@ -37,7 +37,7 @@ export const ThemeSwitch = ({ userTheme = "system" }: { userTheme?: Theme }) => 
   }
 
   return (
-    <fieldset className="my-4 md:my-0 self-center flex p-1 rounded-full border gap-1">
+    <fieldset className="mt-auto self-center flex p-1 rounded-full border gap-1">
       {themes.map((theme) => {
         const Icon = theme.icon
         return (
