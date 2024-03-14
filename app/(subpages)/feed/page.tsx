@@ -28,7 +28,7 @@ async function getPosts(
       const filePath = yearDirectory + "/" + file
       const fileContent = await fs.readFile(filePath, "utf8")
       const { data } = matter(fileContent)
-      return data as Post
+      return data as PostFrontmatter
     })
   )
 
