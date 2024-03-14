@@ -1,14 +1,10 @@
 import { AnimatedPic } from "@/components/modules/animated-pic"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
-import { POSTS_DIRECTORY } from "@/lib/variables/paths"
 import { MessagesSquare } from "lucide-react"
 import Link from "next/link"
-import { promises as fs } from "fs"
 
-export default async function Home() {
-  console.log(POSTS_DIRECTORY)
-  console.log(await fs.readdir(POSTS_DIRECTORY))
+export default function Home() {
   return (
     <Card>
       <article className="p-6 grid auto-rows-min gap-2 [&_p]:text-black-10 dark:[&_p]:text-white-10">
