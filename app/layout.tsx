@@ -7,6 +7,7 @@ import type { Metadata } from "next"
 import { cookies } from "next/headers"
 import "./globals.css"
 import { Card } from "@/components/ui/card"
+import { GoogleAnalytics } from "@/lib/utils/google-analytics"
 
 const geist = GeistSans.className
 const geistMono = GeistMono.variable
@@ -42,6 +43,7 @@ export default function RootLayout({
             {children}
           </main>
         </div>
+        <GoogleAnalytics />
       </body>
     </html>
   )
