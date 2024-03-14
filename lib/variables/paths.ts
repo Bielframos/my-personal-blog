@@ -1,1 +1,1 @@
-export const POSTS_DIRECTORY = process.cwd() + "/posts"
+export const POSTS_DIRECTORY = process.cwd() + "/app/posts"
