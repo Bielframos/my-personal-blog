@@ -10,7 +10,6 @@ import { ChevronLeft } from "lucide-react"
 import { Metadata, ResolvingMetadata } from "next"
 import { MDXRemote } from "next-mdx-remote/rsc"
 import Link from "next/link"
-import { Fragment } from "react"
 
 type Props = {
   params: { year?: string; slug?: string }

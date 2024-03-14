@@ -1,1 +1,3 @@
-export const POSTS_DIRECTORY = process.cwd() + "/app/posts"
+import path from "path"
+
+export const POSTS_DIRECTORY = path.join(process.cwd(), "app", "posts")

@@ -1,13 +1,13 @@
-import { Fragment } from "react"
+import { Button } from "@/components/ui/button"
+import { Card } from "@/components/ui/card"
+import cn from "@/lib/utils/cn"
+import { formatDate } from "@/lib/utils/format-date"
+import { POSTS_DIRECTORY } from "@/lib/variables/paths"
 import { promises as fs } from "fs"
 import matter from "gray-matter"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import cn from "@/lib/utils/cn"
-import { POSTS_DIRECTORY } from "@/lib/variables/paths"
-import { formatDate } from "@/lib/utils/format-date"
-import { Card } from "@/components/ui/card"
 import { Metadata } from "next"
+import Link from "next/link"
+import path from "path"
 
 export const metadata: Metadata = {
   title: "Gabriel França | Feed",
@@ -20,12 +20,12 @@ async function getPosts(
   const startIndex = (page - 1) * pageSize
 
   const postDirectories = await fs.readdir(POSTS_DIRECTORY)
-  const yearDirectory = POSTS_DIRECTORY + "/" + year
+  const yearDirectory = path.join(POSTS_DIRECTORY, year)
   const fileNames = await fs.readdir(yearDirectory)
 
   const posts = await Promise.all(
     fileNames.slice(startIndex, startIndex + pageSize).map(async (file) => {
-      const filePath = yearDirectory + "/" + file
+      const filePath = path.join(yearDirectory, file)
       const fileContent = await fs.readFile(filePath, "utf8")
       const { data } = matter(fileContent)
       return data as PostFrontmatter
