@@ -1,8 +1,8 @@
+import { mdx } from "@/components/modules/mdx"
 import { style as buttonStyle } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import cn from "@/lib/utils/cn"
 import { formatDate } from "@/lib/utils/format-date"
-import { mdxComponents } from "@/lib/utils/mdx-components"
 import { POSTS_DIRECTORY } from "@/lib/variables/paths"
 import { promises as fs } from "fs"
 import matter from "gray-matter"
@@ -82,7 +82,7 @@ export default async function RemoteMdxPage({ params }: Props) {
             <p className="text-black-10 dark:text-white-10">{frontmetter.description}</p>
           </header>
           <div className="grid auto-rows-min gap-4 p-6">
-            <MDXRemote source={post.content} components={mdxComponents} />
+            <MDXRemote source={post.content} components={mdx} />
           </div>
         </Card>
       </div>
