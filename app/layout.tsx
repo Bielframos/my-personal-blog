@@ -38,7 +38,7 @@ export default function RootLayout({
       >
         <div className="md:flex">
           <Navbar userTheme={theme} />
-          <main className="flex flex-col px-6 py-10 md:py-16 justify-center mx-auto">
+          <main className="flex flex-col px-6 py-10 md:py-16 justify-center w-full">
             {children}
           </main>
         </div>

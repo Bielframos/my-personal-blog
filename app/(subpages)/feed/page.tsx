@@ -7,6 +7,11 @@ import cn from "@/lib/utils/cn"
 import { POSTS_DIRECTORY } from "@/lib/variables/paths"
 import { formatDate } from "@/lib/utils/format-date"
 import { Card } from "@/components/ui/card"
+import { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Gabriel França | Feed",
+}
 
 async function getPosts(
   { year, page }: { year: string; page: number } = { year: "2024", page: 1 }
