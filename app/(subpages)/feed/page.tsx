@@ -1,10 +1,11 @@
-import { Button } from "@/components/ui/button"
+import { Button, style as buttonStyle } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import cn from "@/lib/utils/cn"
 import { formatDate } from "@/lib/utils/format-date"
 import { POSTS_DIRECTORY } from "@/lib/variables/paths"
 import { promises as fs } from "fs"
 import matter from "gray-matter"
+import { ChevronLeft, ChevronRight } from "lucide-react"
 import { Metadata } from "next"
 import Link from "next/link"
 import path from "path"
@@ -77,14 +78,14 @@ export default async function Feed({
           })}
         </nav>
 
-        <div>
+        <div className="divide-y">
           {posts.map(({ slug, title, description, publishedAt }) => {
             const date = formatDate(publishedAt)
 
             return (
               <Link key={slug} href={"/feed/" + currentYear + "/" + slug}>
-                <article className="p-6 hover:bg-black-1 dark:hover:bg-white-1 grid grid-cols-[auto,1fr,1fr] auto-rows-min gap-4">
-                  <div className="uppercase text-sm rounded-full px-4 py-1 bg-black-2 dark:bg-white-2 h-fit">
+                <article className="p-6 hover:bg-black-1 dark:hover:bg-white-1 grid md:grid-cols-[auto,1fr,1fr] auto-rows-min gap-2 md:gap-4">
+                  <div className="uppercase text-sm rounded-full px-4 py-1 bg-black-2 dark:bg-white-2 h-fit w-fit">
                     {date}
                   </div>
                   <h3 className="font-semibold text-xl">{title}</h3>
@@ -102,15 +103,21 @@ export default async function Feed({
           <div className="flex gap-2">
             <Link
               href={`?y=${currentYear}&p=${currentPage - 1}`}
-              className={cn(currentPage === 1 && "pointer-events-none")}
+              className={cn(
+                buttonStyle({ variant: "secondary", size: "icon" }),
+                currentPage === 1 && "pointer-events-none opacity-50"
+              )}
             >
-              <Button disabled={currentPage === 1}>Página anterior</Button>
+              <ChevronLeft />
             </Link>
             <Link
-              href={`?y=${currentYear}&p=${currentPage + 1}`}
-              className={cn(currentPage === pagesCount && "pointer-events-none")}
+              href={`?y=${currentYear}&p=${currentPage - 1}`}
+              className={cn(
+                buttonStyle({ variant: "secondary", size: "icon" }),
+                currentPage === pagesCount && "pointer-events-none opacity-50"
+              )}
             >
-              <Button disabled={currentPage === pagesCount}>Próxima página</Button>
+              <ChevronRight />
             </Link>
           </div>
         </footer>
