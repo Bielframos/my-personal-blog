@@ -8,10 +8,12 @@ import { useEffect, useState } from "react"
 export const AnimatedPic = ({
   src,
   alt,
+  fill = false,
   className,
 }: {
   src: string
   alt: string
+  fill?: boolean
   className?: string
 }) => {
   const [showMask, setShowMask] = useState(false)
@@ -28,7 +30,11 @@ export const AnimatedPic = ({
 
   return (
     <motion.div
-      className={cn("relative border z-50 rounded-lg w-full aspect-square", className)}
+      className={cn(
+        "z-50 rounded-lg",
+        !fill && "relative w-full aspect-square border",
+        className
+      )}
       onMouseMove={updateMousePosition}
       onMouseEnter={() => setShowMask(true)}
       onMouseLeave={() => setShowMask(false)}
@@ -57,8 +63,6 @@ export const AnimatedPic = ({
           </mask>
         </defs>
       </svg>
-
-      {/* <div className="absolute bg-white-12 dark:bg-black-12 inset-0 w-full h-full rounded-lg border border-dashed left-4 top-4 bg-texture-black dark:bg-texture-white -z-10" /> */}
     </motion.div>
   )
 }

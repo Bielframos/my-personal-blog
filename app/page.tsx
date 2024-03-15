@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <Card>
       <article className="p-6 grid auto-rows-min gap-2 [&_p]:text-black-10 dark:[&_p]:text-white-10">
-        <h2 className="text-lg font-semibold">Hey there! 👋</h2>
+        <h2 className="text-2xl font-semibold">Hey there! 👋</h2>
 
         <p>
           Esse é meu blog pessoal e nele irei compartilhar bastante coisa legal. Meu objetivo é

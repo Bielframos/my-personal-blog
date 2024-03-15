@@ -39,7 +39,7 @@ export default function RootLayout({
       >
         <div className="flex h-full">
           <Navbar userTheme={theme} />
-          <div className="flex flex-col flex-1">
+          <div className="flex flex-col flex-1 overflow-x-hidden">
             <main className="flex flex-col flex-1 px-6 py-10 md:py-16 justify-center">
               {children}
             </main>
