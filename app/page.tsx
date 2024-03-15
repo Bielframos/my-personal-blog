@@ -1,7 +1,8 @@
 import { AnimatedPic } from "@/components/modules/animated-pic"
-import { Button } from "@/components/ui/button"
+import { style as buttonStyle } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
-import { MessagesSquare } from "lucide-react"
+import cn from "@/lib/utils/cn"
+import { Mail, MessagesSquare } from "lucide-react"
 import Link from "next/link"
 
 export default function Home() {
@@ -69,11 +70,22 @@ export default function Home() {
 
         <p>Pra falar comigo é facinho, basta clicar nesse botão aqui em baixo.</p>
 
-        <Link href="https://wa.me/+5581985898807" target="_blank" className="mt-2">
-          <Button iconPos="before">
-            <MessagesSquare /> Fale comigo
-          </Button>
-        </Link>
+        <div className="flex flex-wrap gap-4 mt-2">
+          <Link
+            href="https://wa.me/+5581985898807"
+            target="_blank"
+            className={cn(buttonStyle({ variant: "default", iconPos: "before" }))}
+          >
+            <MessagesSquare /> Envie uma mensagem
+          </Link>
+          <Link
+            href="https://wa.me/+5581985898807"
+            target="_blank"
+            className={cn(buttonStyle({ variant: "default", iconPos: "before" }))}
+          >
+            <Mail /> contato@gabrielfr.dev
+          </Link>
+        </div>
       </article>
     </Card>
   )
