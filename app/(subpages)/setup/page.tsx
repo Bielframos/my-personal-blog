@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   description: "Meu ambiente de trabalho e perifêricos.",
   openGraph: {
     images:
-      "https://res.cloudinary.com/adstrito/image/upload/v1710518247/Site%20pessoal/zmbvnxspjv1erhpx1etd.png",
+      "https://res.cloudinary.com/adstrito/image/upload/v1710519313/Site%20pessoal/yw5mmvucv8ixqvbbthvn.png",
   },
 }
 
