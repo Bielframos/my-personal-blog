@@ -24,10 +24,10 @@ export default function Network() {
           fazer.
         </p>
       </header>
-      <div className="p-6 grid grid-cols-[repeat(auto-fit,minmax(20rem,1fr))] gap-4">
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(10rem,1fr))] gap-4 p-6">
         {NETWORK_LINKS.map((company) => {
           return (
-            <article className="flex gap-4">
+            <article className="flex gap-4 items-center">
               <div className="border rounded-lg overflow-hidden">
                 <Image
                   src={company.imageUrl}
@@ -37,9 +37,9 @@ export default function Network() {
                   className="aspect-square invert dark:invert-0"
                 />
               </div>
-              <div>
+              <div className="flex-1 overflow-hidden">
                 <h3 className="text-lg font-semibold">{company.name}</h3>
-                <p className="text-black-10 dark:text-white-10">{company.workWith}</p>
+                <p className="text-black-10 dark:text-white-10 truncate">{company.workWith}</p>
                 <Link href={company.siteUrl} className="text-blue-9 hover:underline">
                   {company.siteUrl.replace("https://", "").replace("/", "")}
                 </Link>
