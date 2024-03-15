@@ -1,9 +1,10 @@
 import { X, Zerei } from "@/components/ui/icons"
-import { Cpu, Github, Home, Instagram, Newspaper } from "lucide-react"
+import { Cpu, Github, Home, Instagram, Network, Newspaper } from "lucide-react"
 
 export const SUB_PAGES = [
   { icon: Home, title: "Início", href: "/", disabled: false },
   { icon: Newspaper, title: "Feed", href: "/feed", disabled: false },
+  { icon: Network, title: "Network", href: "/network", disabled: false },
   { icon: Cpu, title: "Setup", href: "/setup", disabled: false },
   { icon: Zerei, title: "Zerei", href: "/zerei", disabled: true },
 ]
