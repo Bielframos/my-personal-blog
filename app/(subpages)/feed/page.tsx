@@ -12,6 +12,12 @@ import path from "path"
 
 export const metadata: Metadata = {
   title: "Gabriel França | Feed",
+  description:
+    "Um pouco sobre tudo o que gosto, tecnologia, esporte, vídeo games e troca de conhecimento.",
+  openGraph: {
+    images:
+      "https://res.cloudinary.com/adstrito/image/upload/v1710518247/Site%20pessoal/wvh7usyhcoi9syuqxuz2.png",
+  },
 }
 
 async function getPosts(

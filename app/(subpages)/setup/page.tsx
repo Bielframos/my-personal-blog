@@ -3,6 +3,16 @@ import { Card } from "@/components/ui/card"
 import { SETUP_ITEMS } from "@/lib/variables/setup-items"
 import { SquareArrowOutUpRight } from "lucide-react"
 import Link from "next/link"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Gabriel França | Setup",
+  description: "Meu ambiente de trabalho e perifêricos.",
+  openGraph: {
+    images:
+      "https://res.cloudinary.com/adstrito/image/upload/v1710518247/Site%20pessoal/zmbvnxspjv1erhpx1etd.png",
+  },
+}
 
 export default function Setup() {
   return (
