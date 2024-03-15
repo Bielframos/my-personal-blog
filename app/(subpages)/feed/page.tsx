@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     "Um pouco sobre tudo o que gosto, tecnologia, esporte, vídeo games e troca de conhecimento.",
   openGraph: {
     images:
-      "https://res.cloudinary.com/adstrito/image/upload/v1710519313/Site%20pessoal/hbk0jgfpmvun3mdiafcs.png",
+      "https://res.cloudinary.com/adstrito/image/upload/v1710519908/Site%20pessoal/nvdoxopyp1h3vlmu7fsg.png",
   },
 }
 

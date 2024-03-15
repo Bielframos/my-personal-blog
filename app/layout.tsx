@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   keywords: ["blog pessoal", "Gabriel França"],
   openGraph: {
     images:
-      "https://res.cloudinary.com/adstrito/image/upload/v1710519313/Site%20pessoal/yw5mmvucv8ixqvbbthvn.png",
+      "https://res.cloudinary.com/adstrito/image/upload/v1710519907/Site%20pessoal/cwcc6dvwralkspe7vagy.png",
     url: "https://www.gabrielfr.dev",
   },
 }
