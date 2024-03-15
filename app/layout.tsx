@@ -19,6 +19,7 @@ export const metadata: Metadata = {
   openGraph: {
     images:
       "https://res.cloudinary.com/adstrito/image/upload/v1710518247/Site%20pessoal/lhwzjnbxqixe3breyyzi.png",
+    url: "https://www.gabrielfr.dev",
   },
 }
 
