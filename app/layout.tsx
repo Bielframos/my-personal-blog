@@ -14,7 +14,7 @@ const geistMono = GeistMono.variable
 
 export const metadata: Metadata = {
   title: "Gabriel França",
-  description: "Um lugar para compartilhar experiências!",
+  description: "Um lugar para compartilhar experiências.",
   keywords: ["blog pessoal", "Gabriel França"],
   openGraph: {
     images:
