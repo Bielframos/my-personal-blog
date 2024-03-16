@@ -1,18 +1,19 @@
 "use server"
 
 const API_KEY = process.env.AIRTABLE_API_KEY
-const API_URL = "https://api.airtable.com/v0/appYDe7xI4LmVnNc0/zerei"
-const PARAMS =
-  "?view=zerados&fields%5B%5D=name&fields%5B%5D=name&fields%5B%5D=launchYear&fields%5B%5D=rating&fields%5B%5D=platform&fields%5B%5D=finishedAt&fields%5B%5D=yearRank"
+const API_URL =
+  "https://api.airtable.com/v0/appYDe7xI4LmVnNc0/zerei?view=zerados&fields%5B%5D=name&fields%5B%5D=name&fields%5B%5D=launchYear&fields%5B%5D=rating&fields%5B%5D=platform&fields%5B%5D=finishedAt&fields%5B%5D=yearRank"
 
 export async function getGames() {
   const games: { [key: string]: Game[] } = {}
 
-  async function fetchGames(url?: string) {
-    const response = await fetch(url ? url : API_URL + PARAMS, {
+  async function fetchGames(offset?: string) {
+    const offsetValue = offset ? offset : ""
+    const response = await fetch(API_URL + "&offset=" + offsetValue, {
       headers: { Authorization: "Bearer " + API_KEY },
       next: { tags: ["games"] },
     })
+
     const page = await response.json()
 
     page.records.forEach((record: { id: string; createdTime: string; fields: Game }) => {
@@ -32,7 +33,7 @@ export async function getGames() {
     })
 
     if (page.offset) {
-      await fetchGames(API_URL + `?offset=${page.offset}`)
+      await fetchGames(page.offset)
     }
   }
 
