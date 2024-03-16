@@ -14,9 +14,13 @@ export async function getGames() {
       next: { tags: ["games"] },
     })
 
-    const page = await response.json()
+    const data = await response.json()
 
-    page.records.forEach((record: { id: string; createdTime: string; fields: Game }) => {
+    if ("error" in data) {
+      return await fetchGames()
+    }
+
+    data.records.forEach((record: { id: string; createdTime: string; fields: Game }) => {
       const game = record.fields
       if (game.finishedAt) {
         const year = new Date(game.finishedAt).getFullYear().toString()
@@ -32,8 +36,8 @@ export async function getGames() {
       }
     })
 
-    if (page.offset) {
-      await fetchGames(page.offset)
+    if (data.offset) {
+      await fetchGames(data.offset)
     }
   }
 
