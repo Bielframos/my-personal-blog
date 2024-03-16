@@ -9,11 +9,13 @@ export const AnimatedPic = ({
   src,
   alt,
   fill = false,
+  rounded,
   className,
 }: {
   src: string
   alt: string
   fill?: boolean
+  rounded?: string
   className?: string
 }) => {
   const [showMask, setShowMask] = useState(false)
@@ -31,17 +33,26 @@ export const AnimatedPic = ({
   return (
     <motion.div
       className={cn(
-        "z-50 rounded-lg",
+        "z-40",
         !fill && "relative w-full aspect-square border",
+        rounded ? rounded : "rounded-lg",
         className
       )}
       onMouseMove={updateMousePosition}
       onMouseEnter={() => setShowMask(true)}
       onMouseLeave={() => setShowMask(false)}
     >
-      <Image src={src} fill={true} alt={alt} className="rounded-lg object-cover" />
+      <Image
+        src={src}
+        fill={true}
+        alt={alt}
+        className={cn("object-cover", rounded ? rounded : "rounded-lg")}
+      />
       <div
-        className="absolute inset-0 backdrop-grayscale backdrop-contrast-125 object-cover rounded-lg z-40"
+        className={cn(
+          "absolute inset-0 backdrop-grayscale backdrop-contrast-125 object-cover z-40",
+          rounded ? rounded : "rounded-lg"
+        )}
         style={{ maskImage: `url(#${src})` }}
       />
       <svg width="100%" height="100%" className="absolute inset-0">

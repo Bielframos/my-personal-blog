@@ -6,7 +6,7 @@ export const SUB_PAGES = [
   { icon: Newspaper, title: "Feed", href: "/feed", disabled: false },
   { icon: Network, title: "Network", href: "/network", disabled: false },
   { icon: Cpu, title: "Setup", href: "/setup", disabled: false },
-  { icon: Zerei, title: "Zerei", href: "/zerei", disabled: true },
+  { icon: Zerei, title: "Zerei", href: "/zerei", disabled: false },
 ]
 
 export const SOCIAL_MEDIA_LINKS = [
