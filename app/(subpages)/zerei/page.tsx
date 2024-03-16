@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description: "Um registro memorável de todos os jogos que já zerei na vida.",
   openGraph: {
     images:
-      "https://res.cloudinary.com/adstrito/image/upload/v1710519907/Site%20pessoal/cwcc6dvwralkspe7vagy.png",
+      "https://res.cloudinary.com/adstrito/image/upload/v1710564344/Site%20pessoal/jmfvzzq9dd7pucnuabdi.png",
   },
 }
 
