@@ -104,7 +104,7 @@ export default async function RemoteMdxPage({ params }: Props) {
       </Link>
       <Card center={false}>
         <div className="p-6 grid gap-2 auto-rows-min">
-          <div className="uppercase text-sm rounded-full px-4 py-1 bg-black-2 dark:bg-white-2 w-fit">
+          <div className="uppercase text-sm rounded-full px-4 py-1 bg-black-2 dark:bg-white-2 w-fit font-mono">
             Erro 404
           </div>
           <h2 className="text-2xl font-semibold">O post não foi encontrado</h2>

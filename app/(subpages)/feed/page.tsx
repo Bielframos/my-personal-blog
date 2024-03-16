@@ -1,4 +1,4 @@
-import { Button, style as buttonStyle } from "@/components/ui/button"
+import { style as buttonStyle } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import cn from "@/lib/utils/cn"
 import { formatDate } from "@/lib/utils/format-date"
@@ -91,7 +91,7 @@ export default async function Feed({
             return (
               <Link key={slug} href={"/feed/" + currentYear + "/" + slug}>
                 <article className="p-6 hover:bg-black-1 dark:hover:bg-white-1 grid md:grid-cols-[auto,1fr,1fr] auto-rows-min gap-2 md:gap-4">
-                  <div className="uppercase text-sm rounded-full px-4 py-1 bg-black-2 dark:bg-white-2 h-fit w-fit">
+                  <div className="uppercase text-sm rounded-full px-4 py-1 bg-black-2 dark:bg-white-2 h-fit w-fit font-mono">
                     {date}
                   </div>
                   <h3 className="font-semibold text-xl">{title}</h3>
