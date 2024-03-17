@@ -1,0 +1,42 @@
+---
+slug: "nextjs-e-tailwindcss-darkmode-usando-server-actions"
+title: "Criando um seletor de temas no Next.js 14 usando TailwindCSS e server actions"
+description: "Um seletor prático que deixa o usuário livre para tomar decisões."
+publishedAt: "03/16/2024"
+keywords: ["nextjs", "tailwindcss", "darkmode"]
+---
+
+Ao idealizar esse blog, um dos requisitos principais era a implementação de um switcher para o tema de cor, porém eu gostaria que ele funcionasse como em outros grandes sites espalhados pela web. De forma que o usuário pudesse escolher entre três opções de modos, claro, escuro e preferência do sistema.
+
+Sabendo qual era meu objetivo, fiz algumas pesquisas na internet e não achei nenhum exemplo de implementação que funcionasse da forma que eu imaginei que deveria funcionar, então eu parti em uma jornada na busca pelo conhecimento necessário para fazer com que a minha ideia saísse do papel.
+
+### Primeiro, eu defini alguns critérios de aceitação:
+
+1. O usuário deve poder escolher o tema de sua preferência
+2. Essa informação deve ser armazenada de forma que seja fácil de ser acessada pelo site
+3. As páginas devem ser pré-montadas com base na preferência do usuário
+
+### A solução
+
+O primeiro passo para nossa solução começar a funcionar é preparar o nosso ambiente, e para isso precisamos fazer uma configuração simples no nosso arquivo `tailwind.config.ts`, acontece que a configuração padrão de modo escuro do Tailwind funciona baseado na preferência do usuário, então sempre que usarmos uma classes com o prefixo `dark:` em um componente ou tag ele só será aplicado quando a preferência de esquema de cores do usuário for definida como "dark".
+
+Por natureza, o Tailwind oferece algumas formas de manipular como o modo escuro deve funcionar e quando deve ser habilitado, outros exemplos incluindo o que iremos aplicar aqui podem ser conferidos na <ExternalLink href="https://tailwindcss.com/docs/dark-mode" children="documentação oficial" />, então, vamos por a mão na massa.
+
+<Highlighter content={
+`import type { Config } from "tailwindcss"
+
+const config: Config = {
+content: [
+"./pages/**/*.{js,ts,jsx,tsx,mdx}",
+"./components/**/*.{js,ts,jsx,tsx,mdx}",
+"./app/**/*.{js,ts,jsx,tsx,mdx}",
+],
+darkMode: [
+"variant",
+["@media (prefers-color-scheme: dark) { &:not(.light *) }", "&:is(.dark *)"],
+],
+// ...Suas configurações do Tailwind
+}
+
+export default config
+`} />

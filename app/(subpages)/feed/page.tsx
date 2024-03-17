@@ -30,8 +30,20 @@ async function getPosts(
   const yearDirectory = path.join(POSTS_DIRECTORY, year)
   const fileNames = await fs.readdir(yearDirectory)
 
+  const fileCreationTimes = await Promise.all(
+    fileNames.map(async (file) => {
+      const filePath = path.join(yearDirectory, file)
+      const fileStat = await fs.stat(filePath)
+      return { fileName: file, creationTime: fileStat.birthtime }
+    })
+  )
+
+  fileCreationTimes.sort((a, b) => b.creationTime.getTime() - a.creationTime.getTime())
+
+  const sortedFileNames = fileCreationTimes.map((fileInfo) => fileInfo.fileName)
+
   const posts = await Promise.all(
-    fileNames.slice(startIndex, startIndex + pageSize).map(async (file) => {
+    sortedFileNames.slice(startIndex, startIndex + pageSize).map(async (file) => {
       const filePath = path.join(yearDirectory, file)
       const fileContent = await fs.readFile(filePath, "utf8")
       const { data } = matter(fileContent)
@@ -84,7 +96,7 @@ export default async function Feed({
           })}
         </nav>
 
-        <div className="divide-y">
+        <div className="grid auto-rows-min divide-y">
           {posts.map(({ slug, title, description, publishedAt }) => {
             const date = formatDate(publishedAt)
 

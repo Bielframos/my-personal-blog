@@ -81,7 +81,7 @@ export default async function RemoteMdxPage({ params }: Props) {
             <h3 className="font-semibold text-3xl">{frontmetter.title}</h3>
             <p className="text-black-10 dark:text-white-10">{frontmetter.description}</p>
           </header>
-          <div className="grid auto-rows-min gap-4 p-6">
+          <div className="grid auto-rows-min gap-4 p-6 text-black-10 dark:text-white-10">
             <MDXRemote source={post.content} components={mdx} />
           </div>
         </Card>

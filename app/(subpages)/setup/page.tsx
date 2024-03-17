@@ -4,6 +4,7 @@ import { SETUP_ITEMS } from "@/lib/variables/setup-items"
 import { SquareArrowOutUpRight } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
+import { ExternalLink } from "@/components/ui/external-link"
 
 export const metadata: Metadata = {
   title: "Gabriel França | Setup",
@@ -61,14 +62,7 @@ export default function Setup() {
                   </td>
                   <td className="px-6 py-4 align-text-top">
                     {item.purchaseLink && (
-                      <Link
-                        href={item.purchaseLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex gap-2 items-center text-blue-9 w-fit hover:underline"
-                      >
-                        Comprar <SquareArrowOutUpRight size={16} />
-                      </Link>
+                      <ExternalLink href={item.purchaseLink}>Comprar</ExternalLink>
                     )}
                   </td>
                 </tr>
