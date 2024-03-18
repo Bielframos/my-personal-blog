@@ -30,24 +30,19 @@ async function getPosts(
   const yearDirectory = path.join(POSTS_DIRECTORY, year)
   const fileNames = await fs.readdir(yearDirectory)
 
-  const fileCreationTimes = await Promise.all(
-    fileNames.map(async (file) => {
-      const filePath = path.join(yearDirectory, file)
-      const fileStat = await fs.stat(filePath)
-      return { fileName: file, creationTime: fileStat.birthtime }
+  const sortedFiles = fileNames
+    .map((fileName) => {
+      const fileArr = fileName.split("&")
+      return { position: parseInt(fileArr[0]), fileName }
     })
-  )
-
-  const sortedFiles = fileCreationTimes.sort(
-    (a, b) => b.creationTime.getTime() - a.creationTime.getTime()
-  )
+    .sort((a, b) => b.position - a.position)
 
   const posts = await Promise.all(
     sortedFiles.slice(startIndex, startIndex + pageSize).map(async (file) => {
       const filePath = path.join(yearDirectory, file.fileName)
       const fileContent = await fs.readFile(filePath, "utf8")
       const { data } = matter(fileContent)
-      return data as PostFrontmatter
+      return { id: file.position, ...data } as PostFrontmatter
     })
   )
 
@@ -97,11 +92,11 @@ export default async function Feed({
         </nav>
 
         <div className="grid auto-rows-min divide-y">
-          {posts.map(({ slug, title, description, publishedAt }) => {
+          {posts.map(({ id, slug, title, description, publishedAt }) => {
             const date = formatDate(publishedAt)
 
             return (
-              <Link key={slug} href={"/feed/" + currentYear + "/" + slug}>
+              <Link key={slug} href={`/feed/${currentYear}/${id}&${slug}`}>
                 <article className="p-6 hover:bg-black-1 dark:hover:bg-white-1 grid md:grid-cols-[auto,1fr,1fr] auto-rows-min gap-2 md:gap-4">
                   <div className="uppercase text-sm rounded-full px-4 py-1 bg-black-2 dark:bg-white-2 h-fit w-fit font-mono">
                     {date}
@@ -143,4 +138,3 @@ export default async function Feed({
     </Card>
   )
 }
-

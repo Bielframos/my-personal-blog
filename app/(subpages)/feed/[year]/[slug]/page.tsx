@@ -17,7 +17,7 @@ type Props = {
 
 async function getPostData(year?: string, slug?: string) {
   if (year && slug) {
-    const filePath = `${POSTS_DIRECTORY}/${year}/${slug}.mdx`
+    const filePath = `${POSTS_DIRECTORY}/${year}/${slug.replace("%26", "&")}.mdx`
     const fileContent = await fs
       .readFile(filePath, "utf8")
       .then((file) => file)

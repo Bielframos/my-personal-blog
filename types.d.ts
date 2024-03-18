@@ -1,4 +1,5 @@
 declare type PostFrontmatter = {
+  id: number
   slug: string
   title: string
   description: string
