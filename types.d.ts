@@ -14,3 +14,5 @@ declare type Game = {
   finishedAt?: string
   yearRank?: number
 }
+
+declare type Theme = "system" | "light" | "dark"

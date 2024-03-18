@@ -1,5 +1,4 @@
 import { Navbar } from "@/components/modules/navbar"
-import { Theme } from "@/components/modules/theme-switch"
 import cn from "@/lib/utils/cn"
 import { GoogleAnalytics } from "@/lib/utils/google-analytics"
 import { GeistMono } from "geist/font/mono"
@@ -59,3 +58,4 @@ export default function RootLayout({
     </html>
   )
 }
+

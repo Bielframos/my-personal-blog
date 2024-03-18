@@ -1,0 +1,186 @@
+---
+slug: "nextjs-e-tailwindcss-darkmode-usando-server-actions"
+title: "Criando um seletor de temas no Next.js 14 usando TailwindCSS e server actions"
+description: "Um seletor prático que deixa o usuário livre para tomar decisões."
+publishedAt: "03/16/2024"
+keywords: ["nextjs", "tailwindcss", "darkmode"]
+---
+
+Ao idealizar este blog, um dos requisitos principais era a implementação de um seletor para o tema de cor, porém eu gostaria que ele funcionasse como em outros grandes sites espalhados pela web. De forma que o usuário pudesse escolher entre três opções de modos, claro, escuro e preferência do sistema.
+
+Sabendo qual era meu objetivo, fiz algumas pesquisas na internet e não achei nenhum exemplo de implementação que funcionasse da forma que imaginei que deveria funcionar, então eu parti em uma jornada na busca pelo conhecimento necessário para fazer com que a minha ideia saísse do papel.
+
+### Critérios de aceitação:
+
+1. O usuário deve poder escolher o tema de sua preferência
+2. Essa informação deve ser armazenada de forma que seja fácil de ser acessada pelo site
+3. As páginas devem ser pré-montadas com base na preferência do usuário
+
+### Tailwind CSS
+
+O primeiro passo para nossa solução começar a funcionar é preparar o nosso ambiente, e para isso precisamos fazer uma configuração simples no nosso arquivo `tailwind.config.ts`, acontece que a configuração padrão de modo escuro do Tailwind funciona baseado na preferência do usuário, então sempre que usarmos uma classe com o prefixo `dark:` em um componente ou tag ele só será aplicado quando a preferência de esquema de cores do usuário for definida como "dark".
+
+Por natureza, o Tailwind oferece algumas formas de manipular como o modo escuro deve funcionar e quando deve ser habilitado, outros exemplos incluindo o que iremos aplicar aqui podem ser conferidos na <ExternalLink href="https://tailwindcss.com/docs/dark-mode" children="documentação oficial" />, então, vamos pôr a mão na massa.
+
+<Highlighter title="tailwind.config.ts" content={
+`import type { Config } from "tailwindcss"
+const config: Config = {
+content: [
+"./pages/**/*.{js,ts,jsx,tsx,mdx}",
+"./components/**/*.{js,ts,jsx,tsx,mdx}",
+"./app/**/*.{js,ts,jsx,tsx,mdx}",
+],
+darkMode: [
+"variant",
+["@media (prefers-color-scheme: dark) { &:not(.light *) }", "&:is(.dark *)"],
+],
+// ...Suas configurações do Tailwind
+}
+
+export default config
+`} />
+
+No código acima estamos alterando a forma que o Tailwind lida com o modo escuro, dentre as opções existentes, estamos utilizando o modo `variant` que nos permite implementar formas personalizadas de lidar com a troca de temas. No nosso caso em específico foram adicionados duas formas de lidar com o modo escuro.
+
+1. `@media (prefers-color-scheme: dark) { &:not(.light *) }`: Quando a preferência de esquema de cores do usuário for "dark" e a tag `html` não contém a classe `.light`
+2. `&:is(.dark *)`: Quando a tag `html` contém a classe `.dark`
+
+Isso nos ajuda a entender o funcionamento do nosso seletor, caso não exista nem a classe `light`, nem `dark` na tag `html` prevalecerá a preferência do sistema, e caso qualquer uma das duas classes existam, elas irão prevalecer à preferência do sistema.
+
+### Server actions
+
+Com o Tailwind devidamente configurado, vamos para o segundo passo que será criar o server action que será responsável por fazer nosso seletor de temas funcional.
+
+<Highlighter title="set-theme-cookie.ts" content={
+`"use server"
+
+import { cookies } from "next/headers"
+
+export async function setThemeCookie(theme: Theme) {
+  const thirtyDay = 365 * 24 * 60 * 60 * 1000
+  cookies().set("theme", theme, { expires: Date.now() + thirtyDay })
+}`} />
+
+Esse server action irá sempre que acionado, criar um cookie "theme" com o valor passado nos parâmetros da função que é do tipo `Theme` que se trata de um tipo global que criei, que representa uma dessas três strings `system`, `light` e `dark`.
+
+Agora que o cookie `theme` pode ou não existir, precisamos implementá-lo.
+
+<Highlighter title="layout.tsx" content={
+`import { Navbar } from "@/components/modules/navbar"
+import { cookies } from "next/headers"
+import "./globals.css"
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const theme = cookies().get("theme")?.value as Theme | undefined
+  return (
+    <html lang="pt-BR" className={theme}>
+      <body>
+        <Navbar userTheme={theme} />
+        {children}
+      </body>
+    </html>
+  )
+}
+`} />
+
+Quando o nosso layout estiver sendo montado no lado do servidor ele pegará nos cookies o cookie `theme`, que pode ou não existir, o valor desse cookie é passado como uma classe para a tag `html`, isso jã faz com que toda a nossa lógica de temas de cores funcione, porém, falta o seletor para que o usuário possa ter sob seu controle essa funcionalidade.
+
+Um adendo importante é que no meu caso o seletor de temas é um elemento global na minha aplicação, então no próprio `layout.tsx` eu passo o valor do cookie para o componente `<Navbar/>` que consequentemente passa o valor do cookie para o componente do seletor de temas que está dentro dele, em casos onde o seletor não seja global, essa mesma lógica de coletar o valor do cookie no componente ou página no lado do servidor que renderiza o seletor de temas.
+
+Agora nós vamos construir o nosso seletor:
+
+<Highlighter title="theme-switcher.tsx" content={
+`"use client"
+
+import { setThemeCookie } from "@/lib/actions/set-theme-cookie"
+import cn from "@/lib/utils/cn"
+import { Monitor, Moon, Sun, type LucideIcon } from "lucide-react"
+import { useState } from "react"
+
+const themes: { icon: LucideIcon; value: Theme }[] = [
+{ icon: Sun, value: "light" },
+{ icon: Monitor, value: "system" },
+{ icon: Moon, value: "dark" },
+]
+
+export const ThemeSwitcher = ({ userTheme = "system" }: { userTheme?: Theme }) => {
+  const [currentTheme, setCurrentTheme] = useState<Theme>(userTheme)
+
+async function switchTheme(newTheme: Theme) {
+
+    switch (newTheme) {
+      case "dark":
+        document.documentElement.classList.remove("light")
+        document.documentElement.classList.add("dark")
+        break
+      case "light":
+        document.documentElement.classList.remove("dark")
+        document.documentElement.classList.add("light")
+        break
+      case "system":
+        document.documentElement.classList.remove("dark")
+        document.documentElement.classList.remove("light")
+        break
+    }
+
+    setCurrentTheme(newTheme)
+    setThemeCookie(newTheme)
+
+}
+
+return (
+
+<fieldset className="mt-auto self-center flex p-1 rounded-full border gap-1">
+  {themes.map((theme) => {
+    const Icon = theme.icon
+    return (
+      <label
+        key={theme.value}
+        htmlFor={theme.value}
+        className={cn(
+          "flex p-2 rounded-full bg-black-1 dark:bg-white-2 hover:bg-black-2 dark:hover:bg-white-3 cursor-pointer transition-colors",
+          currentTheme === theme.value &&
+            "bg-blue-3 dark:bg-blue-dark-3 hover:bg-blue-4 dark:hover:bg-blue-dark-4 text-blue-9"
+        )}
+      >
+        <Icon />
+        <input
+          type="radio"
+          id={theme.value}
+          name="theme-color"
+          checked={currentTheme === theme.value}
+          onChange={() => switchTheme(theme.value)}
+          className="hidden"
+        />
+      </label>
+    )
+  })}
+</fieldset>
+)}`} />
+
+Na construção do componente eu crio um array com 3 objetos que contém o ícone e o valor referente a cada tema que minha aplicação tem, a partir daí inicializo o componente e dentro dele um `useState` que será responsável por armazenar qual tema o usuário selecionou ao interarir com o componente, em seguida criamos a função `switchTheme()` que é a responsável pela lógica do nosso componente, essa função executa um `switch` que faz um controle de fluxo com base no valor do parâmetro `newTheme` que é recebido pela função, o switch avalia três casos.
+
+1. **Usuário seleciona modo escuro**: a classe `dark` é adicionada a tag `html` e a classe `light` é removida
+2. **Usuário seleciona modo claro**: a classe `light` é adicionada a tag `html` e a classe `dark` é removida
+3. **Usuário seleciona modo preferência do sistema**: a classe `dark` e `light` são removidas da tag `html`
+
+Após a conclusão do switch tanto o cookie `theme` quanto o valor de `currentTheme`são atualizados. Seguindo dentro do código do componente, após a declaração da função `switchTheme()` nós definimos a estrutura do componente, no meu caso, eu criei um `fieldset` com três `<inputs type="radio" />` e utilizando os ouvintes de eventos inline, acionamos a função `switchTheme()` sempre que o valor do input é alterado, com isso pronto, só precisamos implementar nosso componente onde precisa ser renderizado.
+
+<Highlighter title="navbar.tsx" content={
+`import { ThemeSwitcher } from "./theme-switcher"
+
+export const Navbar = ({ userTheme }: { userTheme?: Theme }) => {
+  return (
+    <nav>
+      <ThemeSwitcher userTheme={userTheme} />
+    </nav>
+  )
+}
+`} />
+
+Uma observação final, é que, seguindo a lógica de server e client components, eu não precisaria passar de pai pra filho o parâmetro `userTheme`, jã que o componente `navbar` está no lado do servidor eu poderia acessar os cookies diretamente do componente, isso está certo, mas não apliquei dessa forma pois meu `navbar` é um componente do lado do cliente e a sua estrutura foi simplificada para a demostração desse tutorial.
+
+### Chegamos ao fim dessa jornada!
+
+Eu fico feliz que você tenha lido esse artigo até o final, e ficarei ainda mais feliz se você tiver absorvido algum conhecimento disso aqui, espero que eu tenha ajudado você e te desejo todo sucesso do mundo. Até a próxima.
+

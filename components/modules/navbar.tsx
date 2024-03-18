@@ -8,7 +8,7 @@ import { createElement, useState } from "react"
 import { useMediaQuery } from "@/lib/hooks/use-media-query"
 import Image from "next/image"
 import { Button } from "../ui/button"
-import { Theme, ThemeSwitch } from "./theme-switch"
+import { ThemeSwitcher } from "./theme-switcher"
 import { SOCIAL_MEDIA_LINKS, SUB_PAGES } from "@/lib/variables/navbar-data"
 import { ChevronLeft, Menu } from "lucide-react"
 
@@ -101,7 +101,7 @@ export const Navbar = ({ userTheme }: { userTheme?: Theme }) => {
 
         <hr className="mb-6" />
 
-        <ThemeSwitch userTheme={userTheme} />
+        <ThemeSwitcher userTheme={userTheme} />
       </nav>
 
       {isMobile && (
@@ -128,3 +128,4 @@ export const Navbar = ({ userTheme }: { userTheme?: Theme }) => {
     </motion.div>
   )
 }
+

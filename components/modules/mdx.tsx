@@ -4,13 +4,17 @@ import { Highlighter } from "./highlighter"
 
 export const mdx: MDXComponents = {
   h1: ({ children }) => (
-    <h2 className="text-3xl font-semibold text-black-12 dark:text-white-12">{children}</h2>
+    <h2 className="text-3xl font-semibold text-black-12 dark:text-white-12 -mb-3">
+      {children}
+    </h2>
   ),
   h2: ({ children }) => (
-    <h3 className="text-2xl font-semibold text-black-12 dark:text-white-12">{children}</h3>
+    <h3 className="text-2xl font-semibold text-black-12 dark:text-white-12 -mb-3">
+      {children}
+    </h3>
   ),
   h3: ({ children }) => (
-    <h4 className="text-xl font-semibold text-black-12 dark:text-white-12">{children}</h4>
+    <h4 className="text-xl font-semibold text-black-12 dark:text-white-12 -mb-3">{children}</h4>
   ),
   a: ({ children }) => (
     <a
@@ -37,5 +41,8 @@ export const mdx: MDXComponents = {
     </code>
   ),
   ExternalLink: ({ href, children }) => <ExternalLink href={href} children={children} />,
-  Highlighter: ({ content, language }) => <Highlighter content={content} language={language} />,
+  Highlighter: ({ title, content, language }) => (
+    <Highlighter title={title} content={content} language={language} />
+  ),
 }
+

@@ -1,10 +1,9 @@
 "use client"
 
 import { setThemeCookie } from "@/lib/actions/set-theme-cookie"
+import cn from "@/lib/utils/cn"
 import { Monitor, Moon, Sun, type LucideIcon } from "lucide-react"
 import { useState } from "react"
-
-export type Theme = "system" | "light" | "dark"
 
 const themes: { icon: LucideIcon; value: Theme }[] = [
   { icon: Sun, value: "light" },
@@ -12,12 +11,10 @@ const themes: { icon: LucideIcon; value: Theme }[] = [
   { icon: Moon, value: "dark" },
 ]
 
-export const ThemeSwitch = ({ userTheme = "system" }: { userTheme?: Theme }) => {
+export const ThemeSwitcher = ({ userTheme = "system" }: { userTheme?: Theme }) => {
   const [currentTheme, setCurrentTheme] = useState<Theme>(userTheme)
 
   async function switchTheme(newTheme: Theme) {
-    setCurrentTheme(newTheme)
-
     switch (newTheme) {
       case "dark":
         document.documentElement.classList.remove("light")
@@ -33,6 +30,7 @@ export const ThemeSwitch = ({ userTheme = "system" }: { userTheme?: Theme }) => 
         break
     }
 
+    setCurrentTheme(newTheme)
     setThemeCookie(newTheme)
   }
 
@@ -44,7 +42,11 @@ export const ThemeSwitch = ({ userTheme = "system" }: { userTheme?: Theme }) => 
           <label
             key={theme.value}
             htmlFor={theme.value}
-            className="flex p-2 rounded-full bg-black-1 dark:bg-white-2 hover:bg-black-2 dark:hover:bg-white-3 cursor-pointer has-[:checked]:bg-blue-3 dark:has-[:checked]:bg-blue-dark-3 has-[:checked]:text-blue-9 hover:has-[:checked]:bg-blue-4 dark:hover:has-[:checked]:bg-blue-dark-4 transition-colors"
+            className={cn(
+              "flex p-2 rounded-full bg-black-1 dark:bg-white-2 hover:bg-black-2 dark:hover:bg-white-3 cursor-pointer transition-colors",
+              currentTheme === theme.value &&
+                "bg-blue-3 dark:bg-blue-dark-3 hover:bg-blue-4 dark:hover:bg-blue-dark-4 text-blue-9"
+            )}
           >
             <Icon />
             <input
@@ -61,3 +63,4 @@ export const ThemeSwitch = ({ userTheme = "system" }: { userTheme?: Theme }) => 
     </fieldset>
   )
 }
+
