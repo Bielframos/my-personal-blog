@@ -42,6 +42,8 @@ async function getPosts(
     (a, b) => b.creationTime.getTime() - a.creationTime.getTime()
   )
 
+  console.log("Sorted files:" + sortedFiles)
+
   const posts = await Promise.all(
     sortedFiles.slice(startIndex, startIndex + pageSize).map(async (file) => {
       const filePath = path.join(yearDirectory, file.fileName)
@@ -50,6 +52,8 @@ async function getPosts(
       return data as PostFrontmatter
     })
   )
+
+  console.log("posts na função:" + posts)
 
   const postsCount = fileNames.length
   const pagesCount = Math.ceil(postsCount / pageSize)
@@ -69,6 +73,8 @@ export default async function Feed({
     year: currentYear,
     page: currentPage,
   })
+
+  console.log("posts na página:" + posts)
 
   return (
     <Card>
