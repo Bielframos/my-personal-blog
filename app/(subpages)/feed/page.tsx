@@ -38,13 +38,13 @@ async function getPosts(
     })
   )
 
-  fileCreationTimes.sort((a, b) => b.creationTime.getTime() - a.creationTime.getTime())
-
-  const sortedFileNames = fileCreationTimes.map((fileInfo) => fileInfo.fileName)
+  const sortedFiles = fileCreationTimes.sort(
+    (a, b) => b.creationTime.getTime() - a.creationTime.getTime()
+  )
 
   const posts = await Promise.all(
-    sortedFileNames.slice(startIndex, startIndex + pageSize).map(async (file) => {
-      const filePath = path.join(yearDirectory, file)
+    sortedFiles.slice(startIndex, startIndex + pageSize).map(async (file) => {
+      const filePath = path.join(yearDirectory, file.fileName)
       const fileContent = await fs.readFile(filePath, "utf8")
       const { data } = matter(fileContent)
       return data as PostFrontmatter
@@ -143,3 +143,4 @@ export default async function Feed({
     </Card>
   )
 }
+
