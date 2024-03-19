@@ -1,5 +1,6 @@
 import { Card } from "@/components/ui/card"
 import { NETWORK_LINKS } from "@/lib/variables/network-links"
+import { OG_IMAGES } from "@/lib/variables/og-images"
 import { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
@@ -9,8 +10,7 @@ export const metadata: Metadata = {
   description:
     "Um espaço para recomendar pessoas que são incríveis naquilo que elas se propõem a fazer.",
   openGraph: {
-    images:
-      "https://res.cloudinary.com/adstrito/image/upload/v1710534769/Site%20pessoal/kjxvkivr9tl6kmdd8big.png",
+    images: OG_IMAGES.network,
   },
 }
 

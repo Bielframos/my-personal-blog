@@ -5,13 +5,13 @@ import { SquareArrowOutUpRight } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
 import { ExternalLink } from "@/components/ui/external-link"
+import { OG_IMAGES } from "@/lib/variables/og-images"
 
 export const metadata: Metadata = {
   title: "Gabriel França | Setup",
   description: "Meu ambiente de trabalho e perifêricos.",
   openGraph: {
-    images:
-      "https://res.cloudinary.com/adstrito/image/upload/v1710519907/Site%20pessoal/eomxydskku6vpboovelx.png",
+    images: OG_IMAGES.setup,
   },
 }
 

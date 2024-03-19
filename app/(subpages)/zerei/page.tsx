@@ -1,6 +1,7 @@
 import { AnimatedPic } from "@/components/modules/animated-pic"
 import { Card } from "@/components/ui/card"
 import { getGames } from "@/lib/utils/airtable"
+import { OG_IMAGES } from "@/lib/variables/og-images"
 import { Metadata } from "next"
 import { Suspense } from "react"
 
@@ -8,8 +9,7 @@ export const metadata: Metadata = {
   title: "Gabriel França | Zerei",
   description: "Um registro memorável de todos os jogos que já zerei na vida.",
   openGraph: {
-    images:
-      "https://res.cloudinary.com/adstrito/image/upload/v1710564344/Site%20pessoal/jmfvzzq9dd7pucnuabdi.png",
+    images: OG_IMAGES.zerei,
   },
 }
 

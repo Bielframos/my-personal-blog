@@ -7,6 +7,7 @@ import type { Metadata } from "next"
 import { cookies } from "next/headers"
 import "./globals.css"
 import Link from "next/link"
+import { OG_IMAGES } from "@/lib/variables/og-images"
 
 const geist = GeistSans.className
 const geistMono = GeistMono.variable
@@ -16,8 +17,7 @@ export const metadata: Metadata = {
   description: "Um lugar para compartilhar experiências.",
   keywords: ["blog pessoal", "Gabriel França"],
   openGraph: {
-    images:
-      "https://res.cloudinary.com/adstrito/image/upload/v1710519907/Site%20pessoal/cwcc6dvwralkspe7vagy.png",
+    images: OG_IMAGES.home,
     url: "https://www.gabrielfr.dev",
   },
 }
@@ -58,4 +58,3 @@ export default function RootLayout({
     </html>
   )
 }
-

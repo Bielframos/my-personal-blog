@@ -2,6 +2,7 @@ import { style as buttonStyle } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import cn from "@/lib/utils/cn"
 import { formatDate } from "@/lib/utils/format-date"
+import { OG_IMAGES } from "@/lib/variables/og-images"
 import { POSTS_DIRECTORY } from "@/lib/variables/paths"
 import { promises as fs } from "fs"
 import matter from "gray-matter"
@@ -15,8 +16,7 @@ export const metadata: Metadata = {
   description:
     "Um pouco sobre tudo o que gosto, tecnologia, esporte, vídeo games e troca de conhecimento.",
   openGraph: {
-    images:
-      "https://res.cloudinary.com/adstrito/image/upload/v1710519908/Site%20pessoal/nvdoxopyp1h3vlmu7fsg.png",
+    images: OG_IMAGES.feed,
   },
 }
 
