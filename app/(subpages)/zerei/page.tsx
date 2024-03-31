@@ -27,13 +27,17 @@ export default async function Zerei() {
 
       <section className="p-6 border-t">
         <div className="relative w-full aspect-video rounded-lg border">
-          <AnimatedPic src="/zerei/starfield.webp" alt="Wallpaper do jogo Starfield" fill />
+          <AnimatedPic
+            src="/zerei/jedi-survivor.webp"
+            alt="Wallpaper do jogo Star Wars Jedi: Survivor"
+            fill
+          />
           <div className="flex flex-wrap items-end px-6 py-2 border-t absolute bottom-0 w-full bg-white-9 dark:bg-black-9 backdrop-blur-lg rounded-b-lg">
             <p className="w-full font-mono text-sm text-black-10 dark:text-white-10">
               Eu estou jogando
             </p>
-            <h3 className="text-2xl font-semibold mr-2">Starfield</h3>
-            <p className="text-black-10 dark:text-white-10">PC, Xbox</p>
+            <h3 className="text-2xl font-semibold mr-2">Star Wars Jedi: Survivor</h3>
+            <p className="text-black-10 dark:text-white-10">PC</p>
           </div>
         </div>
       </section>
