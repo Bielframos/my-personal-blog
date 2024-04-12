@@ -37,9 +37,39 @@ export const SETUP_ITEMS = [
       "https://www.kabum.com.br/produto/227818/headset-gamer-redragon-zeus-x-chroma-mk-ii-rgb-surround-7-1-usb-drivers-53mm-preto-vermelho-h510-rgb?gad_source=1&gclid=Cj0KCQjwwMqvBhCtARIsAIXsZpYL_mKpWisvJxy3uoa7FKK3wNbQGlFSrSacycNoRgCB1PMRr3AgfgYaAhfvEALw_wcB",
   },
   {
+    product: "Anker Life Q30",
+    specs: `HI-Res Audio, Cancelamento de ruído, 40h de bateria`,
+    purchaseLink:
+      "https://es.aliexpress.com/item/1005001625122784.html?spm=a2g0o.order_list.order_list_main.23.6389194dR22Pb3&gatewayAdapt=glo2esp",
+  },
+  {
+    product: "Baseus Desktop Charger",
+    specs: `100w, Quatro portas, Carregamento simultâneo`,
+    purchaseLink:
+      "https://es.aliexpress.com/item/1005005210163156.html?spm=a2g0o.order_list.order_list_main.35.6389194dR22Pb3&gatewayAdapt=glo2esp",
+  },
+  {
+    product: "Baseus Hub USB",
+    specs: `4 em 1, USB 3.0`,
+    purchaseLink:
+      "https://es.aliexpress.com/item/1005005264365250.html?spm=a2g0o.order_list.order_list_main.41.6389194dR22Pb3&gatewayAdapt=glo2esp",
+  },
+  {
     product: "Fortrek Speed",
     specs: `80x30cm, 4mm`,
     purchaseLink:
       "https://www.amazon.com.br/gp/product/B0BLXHT5Q9/ref=ppx_yo_dt_b_asin_title_o09_s00?ie=UTF8&th=1",
+  },
+  {
+    product: "Adaptador Wireless",
+    specs: `Bluetooth 5.1, 20M, 7 dispositivos simultâneos`,
+    purchaseLink:
+      "https://es.aliexpress.com/item/1005005264365250.html?spm=a2g0o.order_list.order_list_main.41.6389194dR22Pb3&gatewayAdapt=glo2esp",
+  },
+  {
+    product: "Flexform Uni",
+    specs: `All Black`,
+    purchaseLink:
+      "https://www.flexform.com.br/cadeiras/cadeiras-de-escritorio/uni-me-all-black",
   },
 ]
