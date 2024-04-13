@@ -68,7 +68,7 @@ export const Navbar = ({ userTheme }: { userTheme?: Theme }) => {
                 className={cn(
                   "flex gap-2 pl-3 pr-4 py-2 rounded-lg transition-colors w-full hover:bg-black-2 dark:hover:bg-white-2",
                   path === route.href &&
-                    "bg-blue-3 hover:bg-blue-4 dark:bg-blue-dark-4 dark:hover:bg-blue-dark-4 text-blue-9",
+                    "bg-blue-3 hover:bg-blue-4 dark:bg-blue-dark-3 dark:hover:bg-blue-dark-4 text-blue-9",
                   route.disabled && "pointer-events-none opacity-50"
                 )}
               >
@@ -128,4 +128,3 @@ export const Navbar = ({ userTheme }: { userTheme?: Theme }) => {
     </motion.div>
   )
 }
-

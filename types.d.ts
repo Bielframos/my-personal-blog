@@ -1,5 +1,6 @@
 declare type PostFrontmatter = {
   id: number
+  category: "personal" | "dev" | "games" | "sports" | "history"
   slug: string
   title: string
   description: string

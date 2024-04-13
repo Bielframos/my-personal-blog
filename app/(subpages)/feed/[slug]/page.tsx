@@ -10,14 +10,15 @@ import { ChevronLeft } from "lucide-react"
 import { Metadata, ResolvingMetadata } from "next"
 import { MDXRemote } from "next-mdx-remote/rsc"
 import Link from "next/link"
+import path from "path"
 
 type Props = {
-  params: { year?: string; slug?: string }
+  params: { slug?: string }
 }
 
-async function getPostData(year?: string, slug?: string) {
-  if (year && slug) {
-    const filePath = `${POSTS_DIRECTORY}/${year}/${slug.replace("%26", "&")}.mdx`
+async function getPostData(slug?: string) {
+  if (slug) {
+    const filePath = path.join(POSTS_DIRECTORY, `${slug.replaceAll("%26", "&")}.mdx`)
     const fileContent = await fs
       .readFile(filePath, "utf8")
       .then((file) => file)
@@ -38,7 +39,7 @@ export async function generateMetadata(
   { params }: Props,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const post = await getPostData(params.year, params.slug)
+  const post = await getPostData(params.slug)
 
   if (post) {
     const frontmetter = post.data as PostFrontmatter
@@ -55,7 +56,7 @@ export async function generateMetadata(
 }
 
 export default async function RemoteMdxPage({ params }: Props) {
-  const post = await getPostData(params.year, params.slug)
+  const post = await getPostData(params.slug)
 
   if (post) {
     const frontmetter = post.data as PostFrontmatter

@@ -31,13 +31,13 @@ export const Highlighter = ({
   return (
     <div className="border overflow-x-auto rounded-lg">
       {title && (
-        <header className="pl-6 pr-2 py-2 border-b flex items-center justify-between text-black-12 dark:text-white-12">
+        <header className="relative pl-4 py-2 border-b flex items-center text-black-12 dark:text-white-12">
           {title}{" "}
           <button
-            className="flex gap-2 items-center px-4 py-1 rounded-md bg-black-2 dark:bg-white-2 hover:bg-black-3 dark:hover:bg-white-3 transition-all"
+            className="absolute right-1 flex gap-2 items-center p-2 h-8 rounded-md bg-black-2 dark:bg-white-2 hover:bg-black-3 dark:hover:bg-white-3 transition-all"
             onClick={handleCopy}
           >
-            <Copy size={16} /> {copyCheck ? "copiado" : "copiar"}
+            <Copy size={16} /> {copyCheck && "copiado"}
           </button>
         </header>
       )}
@@ -47,4 +47,3 @@ export const Highlighter = ({
     </div>
   )
 }
-

@@ -1,6 +1,8 @@
 import { MDXComponents } from "mdx/types"
 import { ExternalLink } from "../ui/external-link"
 import { Highlighter } from "./highlighter"
+import { YouTubeEmbed } from "@/components/modules/embeds"
+import { Fight } from "./fight"
 
 export const mdx: MDXComponents = {
   h1: ({ children }) => (
@@ -44,5 +46,14 @@ export const mdx: MDXComponents = {
   Highlighter: ({ title, content, language }) => (
     <Highlighter title={title} content={content} language={language} />
   ),
+  YoutubeEmbed: ({ videoId }) => <YouTubeEmbed videoId={videoId} />,
+  Fight: ({ category, blueCorner, redCorner, blueCornerWins, redCornerWins }) => (
+    <Fight
+      category={category}
+      blueCorner={blueCorner}
+      redCorner={redCorner}
+      blueCornerWins={blueCornerWins}
+      redCornerWins={redCornerWins}
+    />
+  ),
 }
-
