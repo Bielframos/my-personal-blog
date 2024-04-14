@@ -1,6 +1,12 @@
 export const SETUP_ITEMS = [
   { product: "PC", specs: "Ryzen 7 2700x, RTX 4060ti, 16GB RAM, 1.256TB SSD" },
   {
+    product: "Ipad 10°",
+    specs: `Azul, 10.9", A14 Bionic, 64GB`,
+    purchaseLink:
+      "https://www.goimports.com.br/index.php?route=product/product&product_id=1592",
+  },
+  {
     product: "LG 29WK600",
     specs: `21:9, 29", 75Hz, IPS, HDR10`,
     purchaseLink:
@@ -61,7 +67,7 @@ export const SETUP_ITEMS = [
       "https://www.amazon.com.br/gp/product/B0BLXHT5Q9/ref=ppx_yo_dt_b_asin_title_o09_s00?ie=UTF8&th=1",
   },
   {
-    product: "Adaptador Wireless",
+    product: "Baseus Adaptador Wireless",
     specs: `Bluetooth 5.1, 20M, 7 dispositivos simultâneos`,
     purchaseLink:
       "https://es.aliexpress.com/item/1005005264365250.html?spm=a2g0o.order_list.order_list_main.41.6389194dR22Pb3&gatewayAdapt=glo2esp",

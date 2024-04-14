@@ -44,7 +44,7 @@ async function getPosts({ category, page }: { category?: string; page: number } 
     })
   )
 
-  const postsCount = fileNames.length
+  const postsCount = sortedFiles.length
   const pagesCount = Math.ceil(postsCount / pageSize)
 
   return { postsCount, pagesCount, posts }
@@ -66,19 +66,21 @@ export default async function Feed({
   return (
     <Card>
       <div className="text-black-11 dark:text-white-11">
-        <header className="p-6 border-b">
-          <h2 className="font-semibold text-2xl text-black-12 dark:text-white-12">
-            Bem-vindo ao meu feed!
-          </h2>
-          <p className="text-black-10 dark:text-white-10">
-            Aqui você irá encontrar conteúdos sobre tudo que eu gosto.
-          </p>
+        <header className="border-b">
+          <div className="p-6 pb-0">
+            <h2 className="font-semibold text-2xl text-black-12 dark:text-white-12">
+              Bem-vindo ao meu feed!
+            </h2>
+            <p className="text-black-10 dark:text-white-10">
+              Aqui você irá encontrar conteúdos sobre tudo que eu gosto.
+            </p>
+          </div>
 
-          <nav className="flex gap-2 mt-4">
+          <nav className="flex gap-2 mt-4 px-6 pb-6 overflow-hidden overflow-x-auto">
             <Link
               href={"/feed"}
               className={cn(
-                "flex px-4 py-1 border hover:bg-black-1 dark:hover:bg-white-1 rounded-full",
+                "flex px-4 py-1 border hover:bg-black-1 dark:hover:bg-white-1 rounded-full text-nowrap",
                 !currentCategory &&
                   "bg-blue-3 dark:bg-blue-dark-3 border-blue-6 dark:border-blue-dark-6 text-blue-9 hover:bg-blue-4 dark:hover:bg-blue-dark-4"
               )}
