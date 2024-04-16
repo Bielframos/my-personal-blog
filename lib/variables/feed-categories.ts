@@ -3,5 +3,4 @@ export const FEED_CATEGORIES = new Map<string, string>([
   ["dev", "dev"],
   ["games", "games"],
   ["sports", "esportes"],
-  ["history", "história"],
 ])
