@@ -1,9 +1,9 @@
-import { AnimatedPic } from "@/components/modules/animated-pic";
-import { style as buttonStyle } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import cn from "@/lib/utils/cn";
-import { Mail, MessagesSquare } from "lucide-react";
-import Link from "next/link";
+import { AnimatedPic } from "@/lib/components/modules"
+import { style as buttonStyle } from "@/lib/components/ui/button"
+import { Card } from "@/lib/components/ui"
+import cn from "@/lib/utils/cn"
+import { Mail, MessagesSquare } from "lucide-react"
+import Link from "next/link"
 
 export default function Home() {
 	return (
@@ -103,5 +103,5 @@ export default function Home() {
 				</div>
 			</article>
 		</Card>
-	);
+	)
 }
