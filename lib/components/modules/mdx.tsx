@@ -4,7 +4,7 @@ import { Highlighter, YouTubeEmbed, FightCard } from "../modules"
 import Image from "next/image"
 import { getImageDataURL } from "@/lib/utils"
 
-export const mdx: MDXComponents = {
+const mdx: MDXComponents = {
 	h1: ({ children }) => (
 		<h2 className="text-3xl font-semibold text-black-12 dark:text-white-12 -mb-3 leading-normal">
 			{children}
@@ -83,3 +83,5 @@ export const mdx: MDXComponents = {
 		/>
 	),
 }
+
+export default mdx

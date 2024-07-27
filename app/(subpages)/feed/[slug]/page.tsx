@@ -1,4 +1,4 @@
-import { mdx } from "@/lib/components/modules/mdx"
+import mdx from "@/lib/components/modules/mdx"
 import { style as buttonStyle } from "@/lib/components/ui/button"
 import { Card } from "@/lib/components/ui"
 import { cn, formatDate } from "@/lib/utils"
