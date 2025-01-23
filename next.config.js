@@ -15,6 +15,10 @@ const nextConfig = {
       },
     ],
   },
+  experimental: {
+    dynamicIO: true,
+  },
 }
 
 module.exports = withMDX(nextConfig)
+
