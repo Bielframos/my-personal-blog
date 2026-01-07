@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @custom-variant dark {
   @media (prefers-color-scheme: dark) {
@@ -67,7 +67,7 @@
   --color-blue-dark-11: #70b8ff;
   --color-blue-dark-12: #c2e6ff;
 
-  --font-mono: var(--font-geist-mono), monospace;
+  --font-sans: "Geist Sans", monospace;
 
   --background-image-texture-white: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='white' fill-opacity='0.1' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
   --background-image-texture-black: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='black' fill-opacity='0.1' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
@@ -93,7 +93,7 @@
 
 @layer base {
   :root {
-    font-family: "Geist Sans", sans-serif;
+    font-family: "Space Mono", monospace;
   }
 
   /* Setting a global color for the borders */
@@ -195,3 +195,4 @@
 .lucide {
   stroke-width: 1.5;
 }
+
