@@ -41,7 +41,7 @@ const Navbar = ({ userTheme }: { userTheme?: Theme }) => {
       variants={ulAnimation}
       initial="hidden"
       animate={showMenu ? "show" : "hidden"}
-      className="fixed md:sticky md:top-0 w-full max-w-64 h-svh border-r bg-white-12 dark:bg-black-12 z-[999]"
+      className="fixed md:sticky md:top-0 w-full max-w-64 h-svh border-r bg-white-12 dark:bg-black-12 z-999"
     >
       <nav className="flex flex-col py-10 md:py-16 h-full overflow-y-auto">
         <header className="flex gap-3 px-6 pt-6 pb-6 md:pt-0 relative">
@@ -108,7 +108,7 @@ const Navbar = ({ userTheme }: { userTheme?: Theme }) => {
         <Button
           size="icon"
           variant="secondary"
-          className="absolute -right-10 border top-6 bg-white-12 dark:bg-black-12 hover:bg-white-10 dark:hover:bg-black-10 backdrop-blur-sm overflow-hidden rounded-l-none"
+          className="absolute -right-10 border top-6 bg-white-12 dark:bg-black-12 hover:bg-white-10 dark:hover:bg-black-10 backdrop-blur-xs overflow-hidden rounded-l-none"
           onClick={() => setShowMenu(!showMenu)}
         >
           <AnimatePresence mode="wait">
