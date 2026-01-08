@@ -47,7 +47,7 @@ export default async function RootLayout({
           <div className="flex h-full">
             <Navbar userTheme={theme} />
             <div className="flex flex-col flex-1 overflow-x-hidden">
-              <main className="flex flex-col flex-1 px-6 py-10 md:py-16 justify-center">
+              <main className="flex flex-col flex-1 px-6 py-10 md:py-16 justify-start items-start">
                 {children}
               </main>
               <footer className="flex justify-end gap-4 border-t py-4 px-6 text-sm">

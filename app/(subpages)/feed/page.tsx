@@ -1,8 +1,8 @@
-import { Card } from "@/lib/components/ui"
 import { style as buttonStyle } from "@/lib/components/ui/button"
-import feed from "@/lib/services/feed-services"
+import feed from "@/lib/services/feed.service"
 import { cn, formatDate } from "@/lib/utils"
 import { OG_IMAGES } from "@/lib/utils/variables"
+import { urlFor } from "@/sanity/lib/image"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import type { Metadata } from "next"
 import Link from "next/link"
@@ -21,56 +21,71 @@ export default async function Feed({
 }: {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }) {
-  const { documents, total, pagesCount } = await feed.getFeed()
-  const currentPage = Number.parseInt((await searchParams).pagina as string) || 1
+  const currentPage = Number.parseInt((await searchParams).page as string) || 1
+  const { posts, pagination } = await feed.getPosts({ page: currentPage })
+
   return (
-    <Card>
-      <div className="text-black-11 dark:text-white-11">
-        <header className="border-b">
-          <div className="p-6">
-            <h2 className="font-semibold text-2xl text-black-12 dark:text-white-12">
-              Bem-vindo ao meu feed!
-            </h2>
-            <p className="text-black-10 dark:text-white-10">
-              Aqui compartilho um pouco sobre tudo que me interessa.
-            </p>
-          </div>
+    <div className="w-full max-w-2xl mx-auto max-md:pl-8 max-md:pt-10">
+      <div className="[&_p]:text-black-10 [&_p]:dark:text-white-9">
+        <header className="mb-4">
+          <h2 className="mb-2">Bem-vindo ao meu feed!</h2>
+          <p>Aqui compartilho um pouco sobre tudo que me interessa.</p>
         </header>
 
-        <div className="grid lg:grid-cols-2 auto-rows-min p-6 pb-10 pr-10 gap-10">
-          {documents.map((document) => {
-            const date = formatDate(document.$createdAt)
+        <ul className="divide-y border-t">
+          {posts.map((post) => {
+            const date = formatDate(post.publishedAt)
+            const postImageUrl = post.mainImage
+              ? urlFor(post.mainImage)?.width(96).quality(80).url()
+              : null
 
             return (
-              <Link key={document.$id} href={`/feed/${document.slug}`} className="h-full">
-                <Card
-                  className="p-6 grid gap-4 auto-rows-min place-content-center text-center justify-items-center"
-                  height="fill"
-                >
-                  <div className="flex gap-2">
-                    <div className="uppercase text-sm rounded-full px-4 py-1 bg-black-2 dark:bg-white-2 h-fit w-fit font-mono border border-transparent">
-                      {date}
+              <li className="py-4 hover:bg-black-1 dark:hover:bg-white-1 px-4" key={post._id}>
+                <Link href={`/feed/${post.slug.current}`} className="flex gap-4 items-center">
+                  {postImageUrl && (
+                    <div className="border rounded-xl overflow-hidden relative">
+                      <img
+                        src={postImageUrl}
+                        alt={post.title}
+                        className="aspect-square object-cover"
+                        width={96}
+                        height={96}
+                      />
+                    </div>
+                  )}
+
+                  <div>
+                    <div className="flex gap-2 flex-wrap mb-2">
+                      <div className="uppercase text-xs rounded-full px-2 py-0.5 bg-black-2 dark:bg-white-2 h-fit w-fit font-mono border border-transparent">
+                        {date}
+                      </div>
+
+                      {post.categories.map((category) => (
+                        <span
+                          key={category.slug.current}
+                          className="uppercase text-xs rounded-full px-2 py-0.5 border h-fit w-fit font-mono text-black-0 dark:text-white-9"
+                        >
+                          {category.title}
+                        </span>
+                      ))}
                     </div>
 
-                    <div className="uppercase text-sm rounded-full px-4 py-1 h-fit w-fit font-mono dark:bg-texture-white bg-texture-black border border-dashed">
-                      {document.category}
-                    </div>
+                    <h3>{post.title}</h3>
+                    <p>{post.subtitle}</p>
                   </div>
-                  <h3 className="font-semibold text-2xl">{document.title}</h3>
-                  <p className="text-black-10 dark:text-white-10">{document.description}</p>
-                </Card>
-              </Link>
+                </Link>
+              </li>
             )
           })}
-        </div>
+        </ul>
 
         <footer className="px-6 py-4 flex justify-between items-center border-t">
           <p>
-            {total} {total > 1 ? "posts" : "post"}
+            {pagination.total} {pagination.total > 1 ? "posts" : "post"}
           </p>
           <div className="flex gap-2">
             <Link
-              href={`?pagina=${currentPage - 1}`}
+              href={`?page=${currentPage - 1}`}
               className={cn(
                 buttonStyle({ variant: "secondary", size: "icon" }),
                 currentPage === 1 && "pointer-events-none opacity-50"
@@ -83,7 +98,7 @@ export default async function Feed({
               href={`?page=${currentPage + 1}`}
               className={cn(
                 buttonStyle({ variant: "secondary", size: "icon" }),
-                currentPage === pagesCount && "pointer-events-none opacity-50"
+                currentPage === pagination.pageCount && "pointer-events-none opacity-50"
               )}
             >
               <ChevronRight />
@@ -91,7 +106,7 @@ export default async function Feed({
           </div>
         </footer>
       </div>
-    </Card>
+    </div>
   )
 }
 
