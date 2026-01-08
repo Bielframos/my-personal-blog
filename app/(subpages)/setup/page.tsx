@@ -1,5 +1,5 @@
 import { AnimatedPic } from "@/lib/components/modules"
-import { Card, ExternalLink } from "@/lib/components/ui"
+import { ExternalLink } from "@/lib/components/ui"
 import {} from "@/lib/components/ui/card"
 import { OG_IMAGES } from "@/lib/utils/variables"
 import { SETUP_ITEMS } from "@/lib/data/setup-items"
@@ -15,8 +15,8 @@ export const metadata: Metadata = {
 
 export default function Setup() {
   return (
-    <div className="w-full max-w-2xl mx-auto">
-      <header className="p-6 flex flex-col">
+    <div className="w-full max-w-2xl mx-auto max-md:pl-8 max-md:pt-10">
+      <header className="flex flex-col mb-6">
         <div className="relative w-full aspect-video rounded-lg border">
           <AnimatedPic
             src="/my-setup.webp"

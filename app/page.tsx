@@ -1,13 +1,12 @@
 import { AnimatedPic } from "@/lib/components/modules"
 import { style as buttonStyle } from "@/lib/components/ui/button"
-import { Card } from "@/lib/components/ui"
 import cn from "@/lib/utils/cn"
-import { Instagram, Mail, MessagesSquare } from "lucide-react"
+import { Instagram, MessagesSquare } from "lucide-react"
 import Link from "next/link"
 
 export default function Home() {
   return (
-    <div className="w-full max-w-2xl mx-auto [&_p]:text-black-10 dark:[&_p]:text-white-9">
+    <div className="w-full max-w-2xl mx-auto [&_p]:text-black-10 dark:[&_p]:text-white-9 max-md:pl-8 max-md:pt-10">
       <article>
         <h2 className="mb-4">Hey there! 👋</h2>
 
