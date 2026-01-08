@@ -5,7 +5,6 @@ import { Geist, Space_Mono } from "next/font/google"
 import type { Metadata } from "next"
 import { cookies } from "next/headers"
 import Link from "next/link"
-import { Suspense } from "react"
 import "./globals.css"
 
 export const metadata: Metadata = {
@@ -35,34 +34,32 @@ export default async function RootLayout({
 }>) {
   const theme = (await cookies()).get("theme")?.value as Theme | undefined
   return (
-    <Suspense>
-      <html lang="pt-BR" className={cn(theme, "h-svh md:h-[unset]")}>
-        <body
-          className={cn(
-            geist.className,
-            spaceMono.className,
-            "bg-white-12 dark:bg-black-12 text-black-12 dark:text-white-12 w-full h-svh md:h-[unset]"
-          )}
-        >
-          <div className="flex h-full">
-            <Navbar userTheme={theme} />
-            <div className="flex flex-col flex-1 overflow-x-hidden">
-              <main className="flex flex-col flex-1 px-6 py-10 md:py-16 justify-start items-start">
-                {children}
-              </main>
-              <footer className="flex justify-end gap-4 border-t py-4 px-6 text-sm">
-                <Link
-                  href="/docs/politicas-de-privacidade"
-                  className="text-black-10 dark:text-white-10 hover:underline"
-                >
-                  Política de Privacidade
-                </Link>
-              </footer>
-            </div>
+    <html lang="pt-BR" className={cn(theme, "h-svh md:h-[unset]")}>
+      <body
+        className={cn(
+          geist.className,
+          spaceMono.className,
+          "bg-white-12 dark:bg-black-12 text-black-12 dark:text-white-12 w-full h-svh md:h-[unset]"
+        )}
+      >
+        <div className="flex h-full">
+          <Navbar userTheme={theme} />
+          <div className="flex flex-col flex-1 overflow-x-hidden">
+            <main className="flex flex-col flex-1 px-6 py-10 md:py-16 justify-start items-start">
+              {children}
+            </main>
+            <footer className="flex justify-end gap-4 border-t py-4 px-6 text-sm">
+              <Link
+                href="/docs/politicas-de-privacidade"
+                className="text-black-10 dark:text-white-10 hover:underline"
+              >
+                Política de Privacidade
+              </Link>
+            </footer>
           </div>
-          <GoogleAnalytics />
-        </body>
-      </html>
-    </Suspense>
+        </div>
+        <GoogleAnalytics />
+      </body>
+    </html>
   )
 }

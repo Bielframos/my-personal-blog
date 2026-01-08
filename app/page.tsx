@@ -1,8 +1,4 @@
 import { AnimatedPic } from "@/lib/components/modules"
-import { style as buttonStyle } from "@/lib/components/ui/button"
-import cn from "@/lib/utils/cn"
-import { Instagram, MessagesSquare } from "lucide-react"
-import Link from "next/link"
 
 export default function Home() {
   return (
@@ -52,7 +48,7 @@ export default function Home() {
         </div>
       </article>
 
-      <hr className="my-10" />
+      {/* <hr className="my-10" />
 
       <article className="space-y-4">
         <h2 className="mb-4">
@@ -80,7 +76,7 @@ export default function Home() {
             <Instagram /> Adstrito.ag
           </Link>
         </div>
-      </article>
+      </article> */}
     </div>
   )
 }
